@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RehberTurcEntity;
 using RehberTurcEntity.Class;
 using System;
@@ -11,15 +13,25 @@ using System.Threading.Tasks;
 
 namespace RehberTurcDAL.Data
 {
-    public class DataContext:DbContext
-    {
+    public class DataContext:IdentityDbContext<ApplicationUser>
+	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("Server=LAPTOP-FJ16G18N; Database=RehberTurc; Integrated Security=True; TrustServerCertificate=True;");
 		}
+		//public DataContext(DbContextOptions<DataContext> options) : base(options)
+		//{
+		//}
+
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			
+			// 🆕 Identity şeması için base methodu çağır
+			base.OnModelCreating(modelBuilder);
+
+
+
 			modelBuilder.Entity<AirbnbComment>()
 				.HasOne(ac => ac.Customer)
 				.WithMany(c => c.AirbnbComments)
@@ -56,6 +68,8 @@ namespace RehberTurcDAL.Data
 				.HasForeignKey(cc => cc.CustomerId)
 				.OnDelete(DeleteBehavior.Restrict);
 		}
+
+		public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 		public DbSet<Country>  Countries { get; set; }
 		public DbSet<City> Cities { get; set; }
 		public DbSet<Customer> Customers { get; set; }

@@ -1,4 +1,5 @@
-﻿using RehberTurcDAL.Abstract;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using RehberTurcDAL.Abstract;
 using RehberTurcDAL.Data;
 using RehberTurcEntity.Class;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RehberTurcDAL.Concrete.EfCore
 {
-	public class EfCoreCountryDal:EfCoreGenericRepostoryDal<Country,DataContext>,ICountryDal
+	public class EfCoreCountryDal:EfCoreGenericRepostoryDal<Country, DataContext>,ICountryDal
 	{
 	}
 }

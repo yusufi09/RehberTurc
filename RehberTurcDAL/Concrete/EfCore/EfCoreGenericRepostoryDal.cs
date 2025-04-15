@@ -13,6 +13,9 @@ namespace RehberTurcDAL.Concrete.EfCore
 		where T : class
 		where TContext : DbContext, new()
 	{
+		private readonly TContext _context;
+
+		
 
 		public void Create(T entitiy)
 		{

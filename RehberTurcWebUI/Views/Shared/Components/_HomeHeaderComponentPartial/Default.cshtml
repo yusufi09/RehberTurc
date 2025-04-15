@@ -1,0 +1,147 @@
+<!-- Container -->
+<div id="container">
+	<header class="clearfix">
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+
+				<a class="navbar-brand" href="index.html">
+					<img src="~/html/images/logo.png" alt="">
+				</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li>
+							<a class="active" href="/">Home <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<ul class="dropdown">
+								<li><a href="/">Homepage </a></li>
+								<li><a href="CityDetail/Index">Ýstanbul </a></li>
+								<li><a href="">Londra </a></li>
+								<li><a href="">NewYork </a></li>
+								<li><a href="">Paris </a></li>
+
+							</ul>
+						</li>
+						<li>
+							<a href="portfolio.html">Pages <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<div class="megadropdown">
+								<div class="dropdown-box">
+									<span>Explore pages</span>
+									<ul class="dropdown-list">
+										<li><a href="explore-sidebar-map.html">Explore map sidebar</a></li>
+										<li><a href="explore-fullwidth-map.html">Explore fullwidth map</a></li>
+										<li><a href="explore-category.html">Explore by Category</a></li>
+										<li><a href="explore-fullwidth-map-list.html">Explore list</a></li>
+									</ul>
+								</div>
+								<div class="dropdown-box">
+									<span>Listing detail pages</span>
+									<ul class="dropdown-list">
+										<li><a href="listing-detail-large.html">Listing detail large image</a></li>
+										<li><a href="listing-detail-sidebar.html">Listing detail with sidebar</a></li>
+										<li><a href="listing-detail-fullwidth.html">Listing detail fullwidth</a></li>
+									</ul>
+								</div>
+								<div class="dropdown-box">
+									<span>Simple pages</span>
+									<ul class="dropdown-list">
+										<li><a href="about.html">About Us</a></li>
+										<li><a href="blog.html">Blog</a></li>
+										<li><a href="single-post.html">Blog Single Post</a></li>
+									</ul>
+								</div>
+								<div class="dropdown-box">
+									<span>Account pages</span>
+									<ul class="dropdown-list">
+										<li><a href="add-listing.html">Add listing</a></li>
+										<li><a href="/User/SignIn">Login &amp; Registration</a></li>
+										<li><a href="/User/SignIn">User page</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+					<ul class="navbar-nav ml-auto right-list">
+						<li><a href="/User/SignIn"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In</a></li>
+						<li><a href="/User/SignIn"><i class="fa fa-user-o" aria-hidden="true"></i> Register</a></li>
+					</ul>
+					<a href="add-listing.html" class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End Header -->
+	<!-- discover-module section
+	================================================== -->
+	<section class="discover">
+		<div class="container">
+
+			<p class="discover__description">
+				Find out perfect place to hangout in your city.
+			</p>
+
+			<h1 class="discover__title places-tab">
+				Discover great places.
+			</h1>
+
+			<!-- by default discover__title events tab is hidden -->
+			<h1 class="discover__title events-tab">
+				Discover great events.
+			</h1>
+
+			<ul class="discover__list">
+				<li class="discover__list-item">
+					<a class="place active-list" href="#"><i class="la la-compass" aria-hidden="true"></i>Places</a>
+				</li>
+				<li class="discover__list-item">
+					<a class="events" href="#"><i class="la la-calendar" aria-hidden="true"></i>Events</a>
+				</li>
+			</ul>
+
+			<form class="discover__form">
+				<input class="discover__form-input" type="text" name="place-event" id="place-event" placeholder="What are you looking for?" />
+				<select class="discover__form-input js-example-basic-multiple">
+					<option>Location? </option>
+					<option>New York</option>
+					<option>California</option>
+					<option>Washington</option>
+					<option>New Jersey</option>
+					<option>Miami</option>
+					<option>San Francisco</option>
+					<option>Boston</option>
+					<option>Pensilvania</option>
+					<option>Other</option>
+				</select>
+				<select class="discover__form-input js-example-basic-multiple">
+					<option>Categories: </option>
+					<option>Art's</option>
+					<option>Health</option>
+					<option>Hotels</option>
+					<option>Real Estate</option>
+					<option>Rentals</option>
+					<option>Restaurant</option>
+					<option>Shopping</option>
+					<option>Travel</option>
+					<option>Vacation</option>
+				</select>
+				<button class="btn-default btn-default-red" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+			</form>
+
+			<p class="discover__hashtags">
+				<span>Popular categories:</span>
+				<a href="explore-category.html">#restaurant,</a>
+				<a href="explore-category.html">#hotels,</a>
+				<a href="explore-category.html">#vacation,</a>
+				<a href="explore-category.html">#rentals,</a>
+				<a href="explore-category.html">#nightlive,</a>
+				<a href="explore-category.html">#shopping,</a>
+				<a href="explore-category.html">... </a>
+			</p>
+
+		</div>
+	</section>

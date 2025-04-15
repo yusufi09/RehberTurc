@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RehberTurcDAL.Abstract;
 using RehberTurcDAL.Data;
 using RehberTurcEntity.Class;

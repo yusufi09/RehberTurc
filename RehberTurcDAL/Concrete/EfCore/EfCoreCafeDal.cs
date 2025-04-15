@@ -1,4 +1,5 @@
-﻿using RehberTurcDAL.Abstract;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using RehberTurcDAL.Abstract;
 using RehberTurcDAL.Data;
 ﻿using RehberTurcDAL.Data;
 using RehberTurcEntity.Class;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RehberTurcDAL.Concrete.EfCore
 {
-	public class EfCoreCafeDal:EfCoreGenericRepostoryDal<Cafe,DataContext>,ICafeDal
+	public class EfCoreCafeDal:EfCoreGenericRepostoryDal<Cafe, DataContext>,ICafeDal
 	{
 	}
 }
