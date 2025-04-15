@@ -1,0 +1,11 @@
+@model List<City>
+
+<!-- overview box -->
+<div class="listing-detail__overview element-waypoint" id="overview-box">
+	<h2 class="listing-detail__content-title">Tarihi</h2>
+	<p class="listing-detail__content-description">
+		@foreach(var item in Model){
+		@item.Description
+		}
+	</p>
+</div>

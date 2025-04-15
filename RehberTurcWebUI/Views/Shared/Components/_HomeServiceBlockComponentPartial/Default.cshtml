@@ -1,0 +1,51 @@
+@model List<Category>
+
+<section class="services">
+	<div class="container">
+
+		<!-- section-header module -->
+		<div class="section-header">
+			<h1 class="section-header__title">
+				Find Your Services
+			</h1>
+			<p class="section-header__description">
+				Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod
+			</p>
+		</div>
+		<!-- end section-header module -->
+
+
+		<div class="services__box">
+			<div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-2 col-md-4 col-sm-6 mb-4">
+                        <!-- mb-4 eklendi -->
+                        <!-- services-post module -->
+                        <a href="#" class="services-post d-block text-decoration-none">
+                            <!-- d-block ve text-decoration-none eklendi -->
+                            <div class="services-post__content text-center p-3 h-100">
+                                <!-- text-center, p-3 ve h-100 eklendi -->
+                                <div class="icon-wrapper mb-3">
+                                    <!-- Ýkon wrapper eklendi -->
+                                    <i class="la la-cutlery fa-3x" aria-hidden="true"></i> <!-- fa-3x ile boyut büyütüldü -->
+                                </div>
+                                <h2 class="services-post__title h5 mb-2">
+                                    <!-- h5 ve mb-2 eklendi -->
+                                    @item.Name
+                                </h2>
+                                <p class="services-post__location small text-muted mb-0">
+                                    <!-- small, text-muted ve mb-0 eklendi -->
+                                    12 Locations <!-- Dinamik lokasyon sayýsý -->
+                                </p>
+                            </div>
+                        </a>
+                        <!-- end services-post module -->
+
+                    </div>
+                }
+			</div>
+		</div>
+
+	</div>
+</section>

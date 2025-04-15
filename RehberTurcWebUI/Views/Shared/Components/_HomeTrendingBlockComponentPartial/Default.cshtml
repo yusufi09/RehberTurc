@@ -1,0 +1,52 @@
+﻿@model List<Country>
+<section class="top-experience">
+	<div class="container">
+
+				<!-- section-header module -->
+				<div class="section-header">
+					<h1 class="section-header__title white-style">
+						Top-rated Experiences
+					</h1>
+					<p class="section-header__description">
+						Sed egestas, ante et vulputate volutpat, eros pede semper est
+					</p>
+				</div>
+				<!-- end section-header module -->
+
+
+				<div class="top-experience__box owl-wrapper">
+					<div class="owl-carousel" data-num="3">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <!-- place-gal module -->
+                                <div class="place-gal">
+                                    <img class="place-gal__image" src="~/html/images/@item.Image" alt="place-image">
+                                    <div class="place-gal__content">
+                                        <h2 class="place-gal__title">
+                                            <a href="CityDetail/Index">
+                                                <img src="~/html/images/@item.Byrk" alt="">
+                                                @item.Name
+                                            </a>
+                                        </h2>
+                                        <ul class="place-gal__list">
+                                            <li class="place-gal__list-item">
+                                                <a href="CityDetail/Index">@item.Cities</a>
+                                            </li>
+                                            <li class="place-gal__list-item">
+                                                <a href="CityDetail/Index">255 Listing</a>
+                                            </li>
+                                        </ul>
+                                        <a class="btn-default" href="CityDetail/Index">
+                                            @item.Name
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- end place-gal module -->
+                            </div>
+                        }
+					</div>
+				</div>
+
+	</div>
+</section>
