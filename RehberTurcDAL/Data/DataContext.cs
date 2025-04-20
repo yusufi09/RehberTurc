@@ -15,13 +15,13 @@ namespace RehberTurcDAL.Data
 {
     public class DataContext:IdentityDbContext<ApplicationUser>
 	{
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlServer("Server=LAPTOP-FJ16G18N; Database=RehberTurc; Integrated Security=True; TrustServerCertificate=True;");
-		}
-		//public DataContext(DbContextOptions<DataContext> options) : base(options)
+		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		//{
+		//	optionsBuilder.UseSqlServer("Server=LAPTOP-FJ16G18N; Database=RehberTurc; Integrated Security=True; TrustServerCertificate=True;");
 		//}
+		public DataContext(DbContextOptions<DataContext> options) : base(options)
+		{
+		}
 
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

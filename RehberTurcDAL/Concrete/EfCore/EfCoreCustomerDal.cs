@@ -12,6 +12,11 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreCustomerDal:EfCoreGenericRepostoryDal<Customer,DataContext>,ICustomerDal
 	{
+		private readonly DataContext _context;
+		public EfCoreCustomerDal(DataContext context) : base(context)
+		{
+			_context = context;
+		}
 
 	}
 }

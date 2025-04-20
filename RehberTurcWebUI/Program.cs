@@ -17,39 +17,22 @@ namespace RehberTurcWebUI
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 
+			builder.Services.AddDbContext<DataContext>(options =>
+			options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-			//builder.Services.AddDbContext<DataContext>(options =>
-			//{
-			//	options.UseSqlServer("Server=LAPTOP-FJ16G18N;Database=RehberTurc;IntegratedSecurity=True;TrustServerCertificate=True;");
-			//});
-			//			builder.Services.AddDbContext<DataContext>(options =>
-			//options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-			//builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-			//              .AddEntityFrameworkStores<DataContext>()
-			//              .AddDefaultTokenProviders();
-
-			//builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-			//{
-			//    options.Password.RequireDigit = false;
-			//    options.Password.RequiredLength = 6;
-			//    options.Password.RequireNonAlphanumeric = false;
-			//    options.Password.RequireUppercase = false;
-			//    options.Password.RequireLowercase = false;
-	     	//});
-	//		builder.Services.AddDbContext<DataContext>(options =>
-	//options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+						  .AddEntityFrameworkStores<DataContext>()
+						  .AddDefaultTokenProviders();
 
 			// Identity servislerini ekleyin
-			//builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
-			//	options.Password.RequireDigit = false;
-			//	options.Password.RequiredLength = 6;
-			//	options.Password.RequireNonAlphanumeric = false;
-			//	options.Password.RequireUppercase = false;
-			//	options.Password.RequireLowercase = false;
-			//})
-			//.AddEntityFrameworkStores<DataContext>()
-			//.AddDefaultTokenProviders();
+			builder.Services.Configure<IdentityOptions>(options =>
+			{
+				options.Password.RequireDigit = false;
+				options.Password.RequiredLength = 6;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireUppercase = false;
+				options.Password.RequireLowercase = false;
+			});
 
 			builder.Services.AddScoped<ICityPageService, CityPageManager>();
 			builder.Services.AddScoped<ICityPageDal, EfCoreCityPageDal>();

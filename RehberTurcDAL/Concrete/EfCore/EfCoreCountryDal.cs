@@ -12,5 +12,10 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreCountryDal:EfCoreGenericRepostoryDal<Country, DataContext>,ICountryDal
 	{
+		private readonly DataContext _context;
+		public EfCoreCountryDal(DataContext context) : base(context)
+		{
+			_context = context;
+		}
 	}
 }

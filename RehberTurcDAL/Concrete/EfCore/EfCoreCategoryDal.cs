@@ -14,7 +14,12 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreCategoryDal : EfCoreGenericRepostoryDal<Category, DataContext>, ICategoryDal
 	{
+		private readonly DataContext _context;
+		public EfCoreCategoryDal(DataContext context) : base(context)
+		{
+			_context = context;
+		}
 
-		
+
 	}
 }

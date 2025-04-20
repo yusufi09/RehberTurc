@@ -13,16 +13,10 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreOtelDal : EfCoreGenericRepostoryDal<Otel, DataContext>, IOtelDal
 	{
-		public override List<Otel> GetAll(Expression<Func<Otel, bool>> filter)
+		private readonly DataContext _context;
+		public EfCoreOtelDal(DataContext context) : base(context)
 		{
-			using (var context = new DataContext())
-			{
-				var cities = context.Otels.Include(i => i.Id).AsQueryable();
-
-				return filter == null
-					? cities.ToList()
-					: cities.Where(filter).ToList();
-			}
+			_context = context;
 		}
 	}
 }

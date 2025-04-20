@@ -13,6 +13,11 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreCityPageDal : EfCoreGenericRepostoryDal<City, DataContext>, ICityPageDal
 	{
+		private readonly DataContext _context;
+		public EfCoreCityPageDal(DataContext context) : base(context)
+		{
+			_context = context;
+		}
 
 	}
 }

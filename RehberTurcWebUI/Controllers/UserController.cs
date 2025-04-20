@@ -6,37 +6,39 @@ namespace RehberTurcWebUI.Controllers
 {
 	public class UserController : Controller
 	{
-		private readonly UserManager<IdentityUser> _userManager;
-		private readonly SignInManager<IdentityUser> _signInManager;
+		//private readonly UserManager<IdentityUser> _userManager;
+		//private readonly SignInManager<IdentityUser> _signInManager;
 
-		public UserController(UserManager<IdentityUser> userManager,
-							  SignInManager<IdentityUser> signInManager)
+		//public UserController(UserManager<IdentityUser> userManager,
+		//					  SignInManager<IdentityUser> signInManager)
+		//{
+		//	_userManager = userManager;
+		//	_signInManager = signInManager;
+		//}
+
+		public IActionResult SignIn()
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
+			return View();
 		}
 
-		public IActionResult SignIn() => View();
+		//[HttpPost]
+		//public async Task<IActionResult> SignIn(RegisterViewModel model)
+		//{
+		//	var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+		//	var result = await _userManager.CreateAsync(user, model.Password);
 
-		[HttpPost]
-		public async Task<IActionResult> SignIn(RegisterViewModel model)
-		{
-			var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-			var result = await _userManager.CreateAsync(user, model.Password);
+		//	if (result.Succeeded)
+		//	{
+		//		await _signInManager.SignInAsync(user, isPersistent: false);
+		//		return RedirectToAction("Index", "Home");
+		//	}
 
-			if (result.Succeeded)
-			{
-				await _signInManager.SignInAsync(user, isPersistent: false);
-				return RedirectToAction("Index", "Home");
-			}
+		//	foreach (var error in result.Errors)
+		//		ModelState.AddModelError("", error.Description);
 
-			foreach (var error in result.Errors)
-				ModelState.AddModelError("", error.Description);
+		//	return View(model);
+		//}
 
-			return View(model);
-		}
-
-		// Login, Logout vs. de eklenebilir
 	}
 
 }

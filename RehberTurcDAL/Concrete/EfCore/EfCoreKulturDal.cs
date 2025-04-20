@@ -13,7 +13,12 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreKulturDal : EfCoreGenericRepostoryDal<Kultur, DataContext>, IKulturDal
 	{
-		
+		private readonly DataContext _context;
+		public EfCoreKulturDal(DataContext context) : base(context)
+		{
+			_context = context;
+		}
+
 	}
 }
 

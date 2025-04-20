@@ -13,5 +13,10 @@ namespace RehberTurcDAL.Concrete.EfCore
 {
 	public class EfCoreCafeDal:EfCoreGenericRepostoryDal<Cafe, DataContext>,ICafeDal
 	{
+		private readonly DataContext _context;
+		public EfCoreCafeDal(DataContext context) : base(context)
+		{
+			_context = context;
+		}
 	}
 }
