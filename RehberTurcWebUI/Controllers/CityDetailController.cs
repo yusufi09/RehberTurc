@@ -6,11 +6,11 @@ namespace RehberTurcWebUI.Controllers
     {
 
         private readonly ICityPageService _cityPageService;
-		private readonly ICustomerService _customerService;
+		private readonly IUserService _userService;
 
-		public CityDetailController(ICustomerService customerService, ICityPageService cityPageService)
+		public CityDetailController(IUserService userService, ICityPageService cityPageService)
         {
-            _customerService = customerService;
+            _userService = userService;
 			_cityPageService = cityPageService;
 		}
         public IActionResult Index()

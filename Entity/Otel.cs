@@ -15,6 +15,6 @@ namespace RehberTurcEntity.Class
 		public List<OtelComment> Comments { get; set; }
 		public int CategoryId { get; set; }
 		public Category Category { get; set; }
-		public List<OtelFavori> Favorites { get; set; }
+		public List<OtelFavorite> OtelFavorites { get; set; }
 	}
 }

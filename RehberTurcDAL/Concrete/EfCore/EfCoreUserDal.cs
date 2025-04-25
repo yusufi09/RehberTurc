@@ -1,6 +1,6 @@
 ﻿using RehberTurcDAL.Abstract;
 using RehberTurcDAL.Data;
-﻿using RehberTurcDAL.Data;
+using RehberTurcEntity;
 using RehberTurcEntity.Class;
 using System;
 using System.Collections.Generic;
@@ -10,13 +10,12 @@ using System.Threading.Tasks;
 
 namespace RehberTurcDAL.Concrete.EfCore
 {
-	public class EfCoreCustomerDal:EfCoreGenericRepostoryDal<Customer,DataContext>,ICustomerDal
+	public class EfCoreUserDal : EfCoreGenericRepostoryDal<ApplicationUser, DataContext>, IUserDal
 	{
 		private readonly DataContext _context;
-		public EfCoreCustomerDal(DataContext context) : base(context)
+		public EfCoreUserDal(DataContext context) : base(context)
 		{
 			_context = context;
 		}
-
 	}
 }

@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RehberTurcBLL.Abstract;
 
-
-namespace RehberTurcWebUI.ViewComponents.CityDetail
+namespace RehberTurcWebUI.ViewComponents.User
 {
-	public class _CityDetailScrollMenuCommentComponentPartial : ViewComponent
+	public class _UserRegisterComponentPartial : ViewComponent
 	{
 		private readonly IUserService _userService;
 
-		public _CityDetailScrollMenuCommentComponentPartial(IUserService userService)
+		public _UserRegisterComponentPartial(IUserService userService)
 		{
 			_userService = userService;
 		}

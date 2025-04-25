@@ -9,13 +9,13 @@ public class HomeController : Controller
 {
 
 	private readonly ICityPageService _cityPageService;
-	private readonly ICustomerService _customerService;
+	private readonly IUserService _userService;
 	private readonly ICategoryService _categoryservice;
 	private readonly ICountryService _countryService;
 
-	public HomeController(ICustomerService customerService, ICityPageService cityPageService, ICountryService countryService, ICategoryService categoryservice)
+	public HomeController(IUserService userService, ICityPageService cityPageService, ICountryService countryService, ICategoryService categoryservice)
 	{
-		_customerService = customerService;
+		_userService = userService;
 		_cityPageService = cityPageService;
 		_countryService = countryService;
 		_categoryservice = categoryservice;

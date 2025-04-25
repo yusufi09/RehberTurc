@@ -1,0 +1,7 @@
+****Bu Hafta Yapılacaklar****
+*customer bağlantılarını İdentityusera taşı
+*giriş kayıt ol sayfasını bitir
+*propert(mülk sahhipleri iççin giriş sayfasını oluştur)
+*Database güncelle
+*Favori Claslarını oluştur
+*Duruma göre Otel Detayı Sayfasına Başla

@@ -33,9 +33,6 @@
 									<span>Explore pages</span>
 									<ul class="dropdown-list">
 										<li><a href="explore-sidebar-map.html">Explore map sidebar</a></li>
-										<li><a href="explore-fullwidth-map.html">Explore fullwidth map</a></li>
-										<li><a href="explore-category.html">Explore by Category</a></li>
-										<li><a href="explore-fullwidth-map-list.html">Explore list</a></li>
 									</ul>
 								</div>
 								<div class="dropdown-box">
@@ -49,15 +46,15 @@
 								<div class="dropdown-box">
 									<span>Simple pages</span>
 									<ul class="dropdown-list">
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="single-post.html">Blog Single Post</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="single-post.html">Blog Single Post</a></li>
 									</ul>
 								</div>
 								<div class="dropdown-box">
 									<span>Account pages</span>
 									<ul class="dropdown-list">
-										<li><a href="add-listing.html">Add listing</a></li>
+										<a asp-controller="PropertyProfile" asp-action="Index">Property Giriþi</a>
+										<a asp-controller="AddListing" asp-action="Index">Property Kayýt</a>
 										<li><a href="/User/SignIn">Login &amp; Registration</a></li>
 										<li><a href="/User/SignIn">User page</a></li>
 									</ul>
@@ -70,7 +67,9 @@
 						<li><a href="/User/SignIn"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In</a></li>
 						<li><a href="/User/SignIn"><i class="fa fa-user-o" aria-hidden="true"></i> Register</a></li>
 					</ul>
-					<a href="add-listing.html" class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a>
+					<a asp-controller="AddListing" asp-action="Index" class="add-list-btn btn-default">
+						<i class="fa fa-plus" aria-hidden="true"></i> Add Listing
+					</a>
 				</div>
 			</div>
 		</nav>

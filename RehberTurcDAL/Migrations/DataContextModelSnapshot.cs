@@ -74,71 +74,6 @@ namespace RehberTurcDAL.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -220,6 +155,227 @@ namespace RehberTurcDAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("RehberTurcEntity.AirbnbFavorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AirbnbId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AirbnbId1")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("UserRating")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AirbnbId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AirbnbFavorites");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreditCard")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.CafeFavorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CafeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CafeId1")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("UserRating")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CafeId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CafeFavorites");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.CarFavorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CarId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CarId1")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("UserRating")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CarFavorites");
+                });
+
             modelBuilder.Entity("RehberTurcEntity.CityComment", b =>
                 {
                     b.Property<int>("Id")
@@ -231,20 +387,60 @@ namespace RehberTurcDAL.Migrations
                     b.Property<int>("CityId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("CityComments");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.CityFavorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId1")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("UserRating")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CityFavorites");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.CityImage", b =>
@@ -311,18 +507,18 @@ namespace RehberTurcDAL.Migrations
                     b.Property<int>("AirbnbId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AirbnbId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("AirbnbComments");
                 });
@@ -395,18 +591,18 @@ namespace RehberTurcDAL.Migrations
                     b.Property<int>("CafeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CafeId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("CafeComments");
                 });
@@ -486,18 +682,18 @@ namespace RehberTurcDAL.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("CarComments");
                 });
@@ -608,51 +804,11 @@ namespace RehberTurcDAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreditCard")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
 
                     b.ToTable("Customers");
                 });
@@ -704,9 +860,6 @@ namespace RehberTurcDAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<int>("KulturId")
                         .HasColumnType("int");
 
@@ -714,11 +867,14 @@ namespace RehberTurcDAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("KulturId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("KulturComments");
                 });
@@ -792,9 +948,6 @@ namespace RehberTurcDAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<int>("OtelId")
                         .HasColumnType("int");
 
@@ -802,11 +955,14 @@ namespace RehberTurcDAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("OtelId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("OtelComments");
                 });
@@ -888,6 +1044,82 @@ namespace RehberTurcDAL.Migrations
                     b.ToTable("RoomType");
                 });
 
+            modelBuilder.Entity("RehberTurcEntity.KulturFavorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("KulturId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("UserRating")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KulturId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("KulturFavorites");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.OtelFavorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtelId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OtelId1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("UserRating")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OtelId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OtelFavorites");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -899,7 +1131,7 @@ namespace RehberTurcDAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RehberTurcEntity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -908,7 +1140,7 @@ namespace RehberTurcDAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RehberTurcEntity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -923,7 +1155,7 @@ namespace RehberTurcDAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RehberTurcEntity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -932,11 +1164,73 @@ namespace RehberTurcDAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RehberTurcEntity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.AirbnbFavorite", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.Airbnb", "Airbnb")
+                        .WithMany()
+                        .HasForeignKey("AirbnbId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("AirbnbFavorites")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Airbnb");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.ApplicationUser", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.City", "city")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("city");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.CafeFavorite", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.Cafe", "Cafe")
+                        .WithMany()
+                        .HasForeignKey("CafeId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("CafeFavorites")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Cafe");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.CarFavorite", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("CarFavorites")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Car");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.CityComment", b =>
@@ -947,14 +1241,31 @@ namespace RehberTurcDAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RehberTurcEntity.Class.Customer", "Customer")
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
                         .WithMany("CityComments")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
 
                     b.Navigation("city");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.CityFavorite", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("CityFavorites")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.CityImage", b =>
@@ -995,13 +1306,12 @@ namespace RehberTurcDAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RehberTurcEntity.Class.Customer", "Customer")
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
                         .WithMany("AirbnbComments")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
 
                     b.Navigation("airbnb");
                 });
@@ -1044,14 +1354,14 @@ namespace RehberTurcDAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RehberTurcEntity.Class.Customer", "Customer")
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
                         .WithMany("CafeComments")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Cafe");
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.Class.CafeImage", b =>
@@ -1092,12 +1402,12 @@ namespace RehberTurcDAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RehberTurcEntity.Class.Customer", "Customer")
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
                         .WithMany("CarComments")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
 
                     b.Navigation("car");
                 });
@@ -1124,17 +1434,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("RehberTurcEntity.Class.Customer", b =>
-                {
-                    b.HasOne("RehberTurcEntity.Class.City", "city")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("city");
-                });
-
             modelBuilder.Entity("RehberTurcEntity.Class.Kultur", b =>
                 {
                     b.HasOne("RehberTurcEntity.Class.Category", "Category")
@@ -1156,20 +1455,20 @@ namespace RehberTurcDAL.Migrations
 
             modelBuilder.Entity("RehberTurcEntity.Class.KulturComment", b =>
                 {
-                    b.HasOne("RehberTurcEntity.Class.Customer", "Customer")
-                        .WithMany("KulturComments")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("RehberTurcEntity.Class.Kultur", "Kultur")
                         .WithMany("Comments")
                         .HasForeignKey("KulturId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("KulturComments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Kultur");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.Class.KulturImage", b =>
@@ -1204,20 +1503,20 @@ namespace RehberTurcDAL.Migrations
 
             modelBuilder.Entity("RehberTurcEntity.Class.OtelComment", b =>
                 {
-                    b.HasOne("RehberTurcEntity.Class.Customer", "Customer")
-                        .WithMany("OtelComments")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("RehberTurcEntity.Class.Otel", "Otel")
                         .WithMany("Comments")
                         .HasForeignKey("OtelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("OtelComments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Otel");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.Class.OtelImage", b =>
@@ -1248,6 +1547,67 @@ namespace RehberTurcDAL.Migrations
                         .IsRequired();
 
                     b.Navigation("RoomType");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.KulturFavorite", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.Kultur", "Kultur")
+                        .WithMany()
+                        .HasForeignKey("KulturId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("KulturFavorites")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Kultur");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.OtelFavorite", b =>
+                {
+                    b.HasOne("RehberTurcEntity.Class.Otel", "Otel")
+                        .WithMany("OtelFavorites")
+                        .HasForeignKey("OtelId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
+                        .WithMany("OtelFavorites")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Otel");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RehberTurcEntity.ApplicationUser", b =>
+                {
+                    b.Navigation("AirbnbComments");
+
+                    b.Navigation("AirbnbFavorites");
+
+                    b.Navigation("CafeComments");
+
+                    b.Navigation("CafeFavorites");
+
+                    b.Navigation("CarComments");
+
+                    b.Navigation("CarFavorites");
+
+                    b.Navigation("CityComments");
+
+                    b.Navigation("CityFavorites");
+
+                    b.Navigation("KulturComments");
+
+                    b.Navigation("KulturFavorites");
+
+                    b.Navigation("OtelComments");
+
+                    b.Navigation("OtelFavorites");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.Class.Airbnb", b =>
@@ -1298,21 +1658,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("Cities");
                 });
 
-            modelBuilder.Entity("RehberTurcEntity.Class.Customer", b =>
-                {
-                    b.Navigation("AirbnbComments");
-
-                    b.Navigation("CafeComments");
-
-                    b.Navigation("CarComments");
-
-                    b.Navigation("CityComments");
-
-                    b.Navigation("KulturComments");
-
-                    b.Navigation("OtelComments");
-                });
-
             modelBuilder.Entity("RehberTurcEntity.Class.Kultur", b =>
                 {
                     b.Navigation("Comments");
@@ -1325,6 +1670,8 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Images");
+
+                    b.Navigation("OtelFavorites");
 
                     b.Navigation("Rooms");
                 });

@@ -18,6 +18,6 @@ namespace RehberTurcDAL.Concrete.EfCore
 		{
 			_context = context;
 		}
-
+		
 	}
 }

@@ -13,7 +13,7 @@ namespace RehberTurcEntity.Class
 		public int CafeId { get; set; }
 		public virtual Cafe Cafe { get; set; }
 
-		public int? CustomerId { get; set; } // Nullable yapıldı
-		public virtual Customer Customer { get; set; }
+		public string? UserId { get; set; }
+		public ApplicationUser User { get; set; }
 	}
 }

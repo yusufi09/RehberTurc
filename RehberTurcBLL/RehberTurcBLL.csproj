@@ -8,7 +8,6 @@
   <ItemGroup>
     <Folder Include="DTOs\CityDTO\" />
     <Folder Include="DTOs\KulturDTO\" />
-    <Folder Include="DTOs\CustomerDTO\" />
     <Folder Include="DTOs\CategoryDTO\" />
     <Folder Include="DTOs\CafeDTO\" />
     <Folder Include="DTOs\OtelDTO\" />

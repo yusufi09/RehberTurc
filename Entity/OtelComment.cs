@@ -13,7 +13,7 @@ namespace RehberTurcEntity.Class
 		public int OtelId { get; set; }		
 		public virtual Otel Otel { get; set; }
 
-		public int? CustomerId { get; set; } // Nullable yapıldı
-		public virtual Customer Customer { get; set; }
+		public string? UserId { get; set; }
+		public ApplicationUser User { get; set; }
 	}
 }

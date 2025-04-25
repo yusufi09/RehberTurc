@@ -26,53 +26,75 @@ namespace RehberTurcDAL.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			
-			// 🆕 Identity şeması için base methodu çağır
 			base.OnModelCreating(modelBuilder);
 
-
-
 			modelBuilder.Entity<AirbnbComment>()
-				.HasOne(ac => ac.Customer)
+				.HasOne(ac => ac.User)
 				.WithMany(c => c.AirbnbComments)
-				.HasForeignKey(ac => ac.CustomerId)
+				.HasForeignKey(ac => ac.UserId)
 				.OnDelete(DeleteBehavior.Restrict); // Müşteri silinmeye çalışılırsa hata verir
 
 			// Aynı şekilde CafeComment için
 			modelBuilder.Entity<CafeComment>()
-				.HasOne(cc => cc.Customer)
+				.HasOne(cc => cc.User)
 				.WithMany(c => c.CafeComments)
-				.HasForeignKey(cc => cc.CustomerId)
+				.HasForeignKey(cc => cc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
 
 			modelBuilder.Entity<CarComment>()
-				.HasOne(bc => bc.Customer)
+				.HasOne(bc => bc.User)
 				.WithMany(c=>c.CarComments)
-				.HasForeignKey(bc=>bc.CustomerId)
+				.HasForeignKey(bc=>bc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
 
 			modelBuilder.Entity<KulturComment>()
-				.HasOne(dc=> dc.Customer)
+				.HasOne(dc=> dc.User)
 				.WithMany(c => c.KulturComments)
-				.HasForeignKey(dc => dc.CustomerId)
+				.HasForeignKey(dc => dc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
 
 			modelBuilder.Entity<OtelComment>()
-				.HasOne(fc => fc.Customer)
+				.HasOne(fc => fc.User)
 				.WithMany(c => c.OtelComments)
-				.HasForeignKey(fc => fc.CustomerId)
+				.HasForeignKey(fc => fc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
 			modelBuilder.Entity<CityComment>()
-				.HasOne(cc => cc.Customer)
+				.HasOne(cc => cc.User)
 				.WithMany(c => c.CityComments)
-				.HasForeignKey(cc => cc.CustomerId)
+				.HasForeignKey(cc => cc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
+
+		    modelBuilder.Entity<OtelFavorite>()
+	            .HasOne(hf => hf.User)
+	            .WithMany(u => u.OtelFavorites)
+	            .HasForeignKey(hf => hf.UserId);
+
+			modelBuilder.Entity<CarFavorite>()
+				.HasOne(cf => cf.User)
+				.WithMany(u => u.CarFavorites)
+				.HasForeignKey(cf => cf.UserId);
+
+			modelBuilder.Entity<KulturFavorite>()
+				.HasOne(cf => cf.User)
+				.WithMany(u => u.KulturFavorites)
+				.HasForeignKey(cf => cf.UserId);
+			modelBuilder.Entity<CityFavorite>()
+				.HasOne(cf => cf.User)
+				.WithMany(u => u.CityFavorites)
+				.HasForeignKey(cf => cf.UserId);
+			modelBuilder.Entity<CafeFavorite>()
+				.HasOne(cf => cf.User)
+				.WithMany(u => u.CafeFavorites)
+				.HasForeignKey(cf => cf.UserId);
+			modelBuilder.Entity<AirbnbFavorite>()
+				.HasOne(cf => cf.User)
+				.WithMany(u => u.AirbnbFavorites)
+				.HasForeignKey(cf => cf.UserId);
 		}
 
 		public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 		public DbSet<Country>  Countries { get; set; }
 		public DbSet<City> Cities { get; set; }
-		public DbSet<Customer> Customers { get; set; }
 		public DbSet<Otel> Otels { get; set; }
 		public DbSet<Kultur> Kulturs { get; set; }
 		public DbSet<Airbnb> Airbnbs { get; set; }
@@ -90,5 +112,11 @@ namespace RehberTurcDAL.Data
 		public DbSet<CafeComment> CafeComments { get; set; }
 		public DbSet<CarComment> CarComments { get; set; }
 		public DbSet<CityComment> CityComments { get; set; }
+		public DbSet<OtelFavorite> OtelFavorites { get; set; }
+		public DbSet<CarFavorite> CarFavorites { get; set; }
+		public DbSet<KulturFavorite> KulturFavorites { get; set; }
+		public DbSet<CafeFavorite> CafeFavorites { get; set; }
+		public DbSet<AirbnbFavorite> AirbnbFavorites { get; set; }
+		public DbSet<CityFavorite> CityFavorites { get; set; }
 	}
 }

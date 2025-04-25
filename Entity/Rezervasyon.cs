@@ -9,8 +9,8 @@ namespace RehberTurcEntity.Class
     public class Rezervasyon
     {
 		public int Id { get; set; }
-		public int CustomerId { get; set; }
-		public Customer Customer { get; set; }
+		public int UserId { get; set; }
+		public ApplicationUser User { get; set; }
 		public int OtelId { get; set; }
 		public Otel Otel { get; set; }
 		public DateTime StartDate { get; set; }

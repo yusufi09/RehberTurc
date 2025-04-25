@@ -1,4 +1,4 @@
-﻿using RehberTurcEntity.Class;
+﻿using RehberTurcEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RehberTurcDAL.Abstract
 {
-	public interface ICustomerDal:IRepostoryDal<Customer>
+	public interface IUserDal:IRepostoryDal<ApplicationUser>
 	{
 	}
 }

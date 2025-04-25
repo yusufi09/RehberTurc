@@ -1,4 +1,4 @@
-@model List<Customer>
+@model List<ApplicationUser>
 
 <!-- reviews list -->
 <ul class="reviews-list">
@@ -9,7 +9,7 @@
 				<img class="reviews-list__item-image" src="~/html/upload/avatar-p" alt="">
 				<div class="reviews-list__item-content">
 					<h3 class="reviews-list__item-title">
-						@item.Name
+						@item.FirstName
 					</h3>
 					<span class="reviews-list__item-location">
 						@item.Address@item.City

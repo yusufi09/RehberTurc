@@ -13,8 +13,8 @@ namespace RehberTurcEntity.Class
 		public int AirbnbId { get; set; }
 		public virtual Airbnb airbnb{ get; set; }
 
-		public int CustomerId { get; set; }
-		public virtual Customer Customer { get; set; }
+		public string? UserId { get; set; }
+		public ApplicationUser User { get; set; }
 
 	}
 }

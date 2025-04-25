@@ -41,9 +41,6 @@
 								<ul class="dropdown">
 									<li><a href="/">Homepage </a></li>
 									<li><a href="CityDetail">İstanbul </a></li>
-									<li><a href="">Londra </a></li>
-									<li><a href="">NewYork </a></li>
-									<li><a href="">Paris </a></li>
 
 								</ul>
 							</li>
@@ -72,15 +69,16 @@
 										<ul class="dropdown-list">
 											<li><a href="about.html">About Us</a></li>
 											<li><a href="blog.html">Blog</a></li>
-											<li><a href="single-post.html">Blog Single Post</a></li>
 										</ul>
 									</div>
 									<div class="dropdown-box">
 										<span>Account pages</span>
 										<ul class="dropdown-list">
-											<li><a href="add-listing.html">Add listing</a></li>
-											<li><a href="sign-page.html">Login &amp; Registration</a></li>
-											<li><a href="user-page.html">User page</a></li>
+											<a asp-controller="PropertyProfile" asp-action="Index">Property Girişi</a>
+											<a asp-controller="AddListing" asp-action="Index">Property Kayıt</a>
+
+											<a asp-controller="User" asp-action="SignIn">SignIn</a>
+											<a asp-controller="User" asp-action="SignIn">Register</a>
 										</ul>
 									</div>
 								</div>
@@ -88,10 +86,21 @@
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
 						<ul class="navbar-nav ml-auto right-list">
-							<li><a href="sign-page.html"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In</a></li>
-							<li><a href="sign-page.html"><i class="fa fa-user-o" aria-hidden="true"></i> Register</a></li>
+							<li>
+								<a asp-controller="User" asp-action="SignIn">
+									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In
+								</a>
+							</li>
+							<li>
+								<a asp-controller="User" asp-action="SignIn">
+									<i class="fa fa-user-o" aria-hidden="true"></i> Register
+								</a>
+							</li>
 						</ul>
-						<a href="add-listing.html" class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a>
+
+						<a asp-controller="AddListing" asp-action="Index" class="add-list-btn btn-default">
+							<i class="fa fa-plus" aria-hidden="true"></i> Add Listing
+						</a>
 					</div>
 				</div>
 			</nav>
@@ -100,7 +109,7 @@
 
        @*  @await Component.InvokeAsync("_CityDetailUpPartHeaderComponentPartial") *@
 
-		@await Component.InvokeAsync("_CityDetailListingHeaderComponentPartial")
+		@* @await Component.InvokeAsync("_CityDetailListingHeaderComponentPartial")
 
 		@await Component.InvokeAsync("_CityDetailScrollMenuComponentPartial")
 
@@ -116,7 +125,7 @@
 
         @await Component.InvokeAsync("_CityDetailFooterComponentPartial")
 
-        @await Component.InvokeAsync("_CityDeailScriptPartComponentPartial")
+        @await Component.InvokeAsync("_CityDeailScriptPartComponentPartial") *@
 		@RenderBody()
 
 </body>

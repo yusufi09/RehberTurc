@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RehberTurcEntity
 {
-	public class OtelFavori
+	public class OtelFavorite:BaseEntityFavorite
 	{
-		public int Id { get; set; }
-		public string Favori { get; set; }
 		public string OtelId { get; set; }
 		public Otel Otel { get; set; }
+		public string? UserId { get; set; }
+		public ApplicationUser User { get; set; }
 	}
 }

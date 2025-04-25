@@ -37,8 +37,8 @@ namespace RehberTurcWebUI
 			builder.Services.AddScoped<ICityPageService, CityPageManager>();
 			builder.Services.AddScoped<ICityPageDal, EfCoreCityPageDal>();
 
-			builder.Services.AddScoped<ICustomerService, CustomerManager>();
-			builder.Services.AddScoped<ICustomerDal, EfCoreCustomerDal>();
+			builder.Services.AddScoped<IUserService, UserManager>();
+			builder.Services.AddScoped<IUserDal, EfCoreUserDal>();
 
 			builder.Services.AddScoped<ICountryService, CountryManager>();
 			builder.Services.AddScoped<ICountryDal,EfCoreCountryDal>();

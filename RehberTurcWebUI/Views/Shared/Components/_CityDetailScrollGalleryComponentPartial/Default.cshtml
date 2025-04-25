@@ -5,14 +5,12 @@
 	<h2 class="listing-detail__content-title">Görselller</h2>
 	<div class="listing-detail__gallery-inner owl-wrapper">
 		<div class="owl-carousel" data-num="4">
-			@foreach(var item in Model)
+			@foreach (var item in Model)
 			{
 				<div class="item">
 					<img src="~/html/images/@item.Images" alt="">
 				</div>
 			}
-
-
 		</div>
 	</div>
 </div>

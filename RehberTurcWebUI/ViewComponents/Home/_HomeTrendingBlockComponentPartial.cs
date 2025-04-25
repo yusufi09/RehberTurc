@@ -14,7 +14,7 @@ namespace RehberTurcWebUI.ViewComponents.Home
 		}
 		public IViewComponentResult Invoke()
 		{
-			return View();
+			return View(_countryservice.GetAll());
 		}
 	}
 }

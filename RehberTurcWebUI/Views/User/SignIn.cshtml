@@ -4,7 +4,6 @@
 	Layout = null;
 }
 
-
 <html lang="en" class="no-js">
 <head>
 	<title>Triptip</title>
@@ -43,8 +42,8 @@
 								<a class="active" href="/">Home <i class="fa fa-caret-down" aria-hidden="true"></i></a>
 								<ul class="dropdown">
 									<li><span>Demo Pages</span></li>
-									<li><a href="/">Homepage 1</a></li>
-									<li><a href="CityDetail/Index">İstanbul</a></li>
+									<li><a href="/">Homepage </a></li>
+									<a asp-controller="CityDetail" asp-action="Index">İstanbul</a>
 								</ul>
 							</li>
 							<li>
@@ -71,14 +70,14 @@
 										<span>Simple pages</span>
 										<ul class="dropdown-list">
 											<li><a href="about.html">About Us</a></li>
-											<li><a href="blog.html">Blog</a></li>
 											<li><a href="single-post.html">Blog Single Post</a></li>
 										</ul>
 									</div>
 									<div class="dropdown-box">
 										<span>Account pages</span>
 										<ul class="dropdown-list">
-											<li><a href="add-listing.html">Add listing</a></li>
+											<a asp-controller="PropertyProfile" asp-action="Index">Property Girişi</a>
+											<a asp-controller="AddListing" asp-action="Index">Property Kayıt</a>
 											<li><a href="/SignIn">Login &amp; Registration</a></li>
 											<li><a href="/SignIn">User page</a></li>
 										</ul>
@@ -110,7 +109,10 @@
 							<li><a href="/User/SignIn"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In</a></li>
 							<li><a href="/User/SignIn"><i class="fa fa-user-o" aria-hidden="true"></i> Register</a></li>
 						</ul>
-						<a href="add-listing.html" class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a>
+						<a asp-controller="AddListing" asp-action="Index" class="add-list-btn btn-default">
+							<i class="fa fa-plus" aria-hidden="true"></i> Add Listing
+						</a>
+
 					</div>
 				</div>
 			</nav>
@@ -120,91 +122,9 @@
 			================================================== -->
 		<section class="sign">
 			<div class="sign__area">
-				<nav>
-					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="#nav-sign" role="tab" aria-controls="nav-sign" aria-selected="true">Sign in</a>
-						<a class="nav-item nav-link" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register" aria-selected="false">Register</a>
-					</div>
-				</nav>
-				<div class="tab-content" id="nav-tabContent">
-					<div class="tab-pane fade show active" id="nav-sign" role="tabpanel" aria-labelledby="nav-sign-tab">
-
-						<!-- sign-form-module -->
-						<form class="sign-form">
-							<label class="sign-form__label" for="username">
-								Email address or Username:
-							</label>
-							<input class="sign-form__input-text" type="text" name="username" id="username" placeholder="Email or Username" />
-							<label class="sign-form__label" for="password">
-								Password:
-							</label>
-							<input class="sign-form__input-text" type="password" name="password" id="password" placeholder="Password" />
-							<div class="sign-form__checkbox">
-								<input class="sign-form__input-checkbox" type="checkbox" name="rememb-check" id="rememb-check" />
-								<span class="sign-form__checkbox-style"></span>
-								<span class="sign-form__checkbox-text">Remember me</span>
-							</div>
-							<a class="sign-form__forget-link" href="#">Forget password?</a>
-
-							<button class="sign-form__submit" id="submit-loggin" type="submit">
-								<i class="fa fa-sign-in" aria-hidden="true"></i>
-								Login
-							</button>
-							<p class="sign-form__text">
-								or Login With
-							</p>
-							<ul class="sign-form__social">
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-							</ul>
-						</form>
-
-						<!-- End sign-form-module -->
-
-					</div>
-					<div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
-
-
-						<!-- sign-form-module -->
-						<form class="sign-form">
-							<label class="sign-form__label" for="email">
-								Email address:
-							</label>
-							<input class="sign-form__input-text" type="text" name="email" id="email" placeholder="Enter your email" />
-							<label class="sign-form__label" for="username2">
-								Username:
-							</label>
-							<input class="sign-form__input-text" type="text" name="username2" id="username2" placeholder="Enter your name" />
-							<label class="sign-form__label" for="password2">
-								Password:
-							</label>
-							<input class="sign-form__input-text" type="password" name="password2" id="password2" placeholder="Password" />
-							<label class="sign-form__label" for="con-password2">
-								Confirm Password:
-							</label>
-							<input class="sign-form__input-text" type="password" name="con-password2" id="con-password2" placeholder="Confirm Password" />
-							<div class="sign-form__checkbox">
-								<input class="sign-form__input-checkbox" type="checkbox" name="rememb-check2" id="rememb-check2" />
-								<span class="sign-form__checkbox-style"></span>
-								<span class="sign-form__checkbox-text">I've read and accept terms & conditions</span>
-							</div>
-
-							<button class="sign-form__submit" type="submit" id="submit_signup">
-								<i class="fa fa-sign-in" aria-hidden="true"></i>
-								Sign Up
-							</button>
-							<p class="sign-form__text">
-								or Sign Up With
-							</p>
-							<ul class="sign-form__social">
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-							</ul>
-						</form>
-
-						<!-- End sign-form-module -->
-					</div>
-				</div>
+				@await Component.InvokeAsync("_UserSignComponentPartial")
+				@await Component.InvokeAsync("_UserRegisterComponentPartial")
+					
 			</div>
 			<ul class="sign__slideshow">
 				<li><span>Image 01</span></li>
@@ -237,6 +157,5 @@
 	<script src="~/html/js/bootstrap.min.js"></script>
 	<script src="~/html/js/jquery.countTo.js"></script>
 	<script src="~/html/js/script.js"></script>
-
-</body>
+</body> 
 </html>
