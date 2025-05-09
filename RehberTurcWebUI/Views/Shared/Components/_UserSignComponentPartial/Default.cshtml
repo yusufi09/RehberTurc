@@ -1,4 +1,4 @@
-﻿@model ApplicationUser
+﻿@model LoginViewModel
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
 		<a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="#nav-sign" role="tab" aria-controls="nav-sign" aria-selected="true">Sign in</a>
@@ -13,11 +13,11 @@
 			<label class="sign-form__label" for="username">
 			 Email address or Username:
 			</label>
-			<input class="sign-form__input-text" type="text" name="username" id="username" placeholder="Email or Username" />
+			<input class="sign-form__input-text" type="text" name="username" id="username" placeholder="@Model.Email or @Model.UserName" />
 			<label class="sign-form__label" for="password">
 				Password:
 			</label>
-			<input class="sign-form__input-text" type="password" name="password" id="password" placeholder="Password" />
+			<input class="sign-form__input-text" type="password" name="password" id="password" placeholder="@Model.Password" />
 			<div class="sign-form__checkbox">
 				<input class="sign-form__input-checkbox" type="checkbox" name="rememb-check" id="rememb-check" />
 				<span class="sign-form__checkbox-style"></span>

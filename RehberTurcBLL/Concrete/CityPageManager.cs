@@ -40,9 +40,9 @@ namespace RehberTurcBLL.Concrete
 		{
 			_cityDal.Update(entity);
 		}
-		public City GetOne(Expression<Func<City, bool>> filter = null)
+		public City GetOne(int id)
 		{
-			return _cityDal.GetOne(filter);
+			return _cityDal.GetOne(id);
 		}
 		public City GetById(int id)
 		{

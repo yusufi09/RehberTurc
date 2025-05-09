@@ -1,0 +1,107 @@
+﻿@model List<City>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Add, Edit &amp; Remove</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <div class="listjs-table" id="customerList">
+                    <div class="row g-4 mb-3">
+                        <div class="col-sm-auto">
+                            <div>
+                                <button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Add</button>
+                                <button class="btn btn-soft-danger" onclick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="d-flex justify-content-sm-end">
+                                <div class="search-box ms-2">
+                                    <input type="text" class="form-control search" placeholder="Search...">
+                                    <i class="ri-search-line search-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive table-card mt-3 mb-1">
+                        <table class="table align-middle table-nowrap" id="customerTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="5%" style="width: 46px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="cardtableCheck">
+                                            <label class="form-check-label" for="cardtableCheck"></label>
+                                        </div>
+                                    </th>
+                                    <th width="5%">ID</th>
+                                    <th width="30%">Resim</th>
+                                    <th width="15%">Title</th>
+                                    <th width="10%">Date</th>
+                                    <th width="5%">Bilgi</th>
+                                    <th width="15%">Status</th>
+                                    <th width="15%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="cardtableCheck_@item.Id">
+                                                <label class="form-check-label" for="cardtableCheck_@item.Id"></label>
+                                            </div>
+                                        </td>
+                                        <td><a href="#" class="fw-medium">@item.Id</a></td>
+                                        <td><img src="~/html/images/@item.Images[0].Url" style="width: 50px; height: auto;" /></td>
+                                        <td>@item.Tittle</td>
+                                        <td>@item.CreatedDate</td>
+                                        <td>@item.Description</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <a href="/Product/Edit?id=@item.Id" class="btn btn-warning btn-sm text-white">
+                                                    <i class="far fa-edit"></i> Güncelle
+                                                </a>
+                                                <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash-alt"></i> Sil
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="noresult" style="display: none">
+                            <div class="text-center">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px"></lord-icon>
+                                <h5 class="mt-2">Sorry! No Result Found</h5>
+                                <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any orders for you search.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <div class="pagination-wrap hstack gap-2">
+                            <a class="page-item pagination-prev disabled" href="javascript:void(0);">
+                                Previous
+                            </a>
+                            <ul class="pagination listjs-pagination mb-0"><li class="active"><a class="page" href="#" data-i="1" data-page="8">1</a></li></ul>
+                            <a class="page-item pagination-next" href="javascript:void(0);">
+                                Next
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end col -->
+</div>

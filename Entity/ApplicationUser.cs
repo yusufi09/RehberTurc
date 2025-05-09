@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿ using Microsoft.AspNetCore.Identity;
 using RehberTurcEntity.Class;
 using System;
 using System.Collections.Generic;

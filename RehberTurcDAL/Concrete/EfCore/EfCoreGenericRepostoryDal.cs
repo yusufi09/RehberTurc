@@ -55,6 +55,7 @@ namespace RehberTurcDAL.Concrete.EfCore
 			return context.Set<T>().Where(filter).FirstOrDefault();
 
 		}
+		
 
 		public void Update(T entitiy)
 		{
@@ -64,5 +65,7 @@ namespace RehberTurcDAL.Concrete.EfCore
 			context.SaveChanges();
 
 		}
+
+		
 	}
 }

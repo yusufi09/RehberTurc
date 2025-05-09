@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RehberTurcDAL.Data;
 using RehberTurcEntity;
+using RehberTurcDAL.Mapping;
 
 namespace RehberTurcWebUI
 {
@@ -13,7 +14,8 @@ namespace RehberTurcWebUI
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+			
+			var builder = WebApplication.CreateBuilder(args);
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 
@@ -24,15 +26,7 @@ namespace RehberTurcWebUI
 						  .AddEntityFrameworkStores<DataContext>()
 						  .AddDefaultTokenProviders();
 
-			// Identity servislerini ekleyin
-			builder.Services.Configure<IdentityOptions>(options =>
-			{
-				options.Password.RequireDigit = false;
-				options.Password.RequiredLength = 6;
-				options.Password.RequireNonAlphanumeric = false;
-				options.Password.RequireUppercase = false;
-				options.Password.RequireLowercase = false;
-			});
+			
 
 			builder.Services.AddScoped<ICityPageService, CityPageManager>();
 			builder.Services.AddScoped<ICityPageDal, EfCoreCityPageDal>();
@@ -45,10 +39,26 @@ namespace RehberTurcWebUI
 
 			builder.Services.AddScoped<ICategoryService, CategoryManager>();
 			builder.Services.AddScoped<ICategoryDal, EfCoreCategoryDal>();
-            var app = builder.Build();
 
 
+			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			
+			var app = builder.Build();
+
+			app.MapControllerRoute(
+			   name: "cityDetail",
+			   pattern: "CityDetail/{cityName}",
+			   defaults: new { controller = "CityDetail", action = "Index" });
+			// Identity servislerini ekleyin
+			//builder.Services.Configure<IdentityOptions>(options =>
+			//{
+			//	options.Password.RequireDigit = false;
+			//	options.Password.RequiredLength = 6;
+			//	options.Password.RequireNonAlphanumeric = false;
+			//	options.Password.RequireUppercase = false;
+			//	options.Password.RequireLowercase = false;
+			//});
+
 			if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");

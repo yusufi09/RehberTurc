@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.14">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Entity\RehberTurcEntity.csproj" />
     <ProjectReference Include="..\RehberTurcBLL\RehberTurcBLL.csproj" />
     <ProjectReference Include="..\RehberTurcDAL\RehberTurcDAL.csproj" />
   </ItemGroup>

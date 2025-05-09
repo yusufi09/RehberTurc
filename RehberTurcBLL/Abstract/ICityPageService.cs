@@ -14,7 +14,7 @@ namespace RehberTurcBLL.Abstract
 		void Create(City entity);
 		void Update(City entity);
 		void Delete(City entity);
-		City GetOne(Expression<Func<City, bool>> filter = null);
+		City GetOne(int id);
 		City GetById(int id);
 	}
 }
