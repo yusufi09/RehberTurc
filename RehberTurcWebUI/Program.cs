@@ -40,15 +40,16 @@ namespace RehberTurcWebUI
 			builder.Services.AddScoped<ICategoryService, CategoryManager>();
 			builder.Services.AddScoped<ICategoryDal, EfCoreCategoryDal>();
 
-
+			builder.Services.AddScoped<IMailService, MailManager>();
+			builder.Services.AddScoped<IMailDal, EfCoreMailDal>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			
 			var app = builder.Build();
 
-			app.MapControllerRoute(
-			   name: "cityDetail",
-			   pattern: "CityDetail/{cityName}",
-			   defaults: new { controller = "CityDetail", action = "Index" });
+			//app.MapControllerRoute(
+			//   name: "cityDetail",
+			//   pattern: "CityDetail/{cityName}",
+			//   defaults: new { controller = "CityDetail", action = "Index" });
 			// Identity servislerini ekleyin
 			//builder.Services.Configure<IdentityOptions>(options =>
 			//{

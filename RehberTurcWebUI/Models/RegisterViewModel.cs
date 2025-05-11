@@ -6,8 +6,12 @@ namespace RehberTurcWebUI.Models
 	{
 		[Required]
 		[StringLength(100, ErrorMessage = "Kullanıcı adı {0} en az {2} ve en fazla {1} karakter olmalıdır.", MinimumLength = 6)]
-		[Display(Name = "Kullanıcı Adı")]
-		public string UserName { get; set; }
+		[Display(Name = "Ad")]
+		public string FirstName { get; set; }
+		[Required]
+		[StringLength(100, ErrorMessage = "Kullanıcı adı {0} en az {2} ve en fazla {1} karakter olmalıdır.", MinimumLength = 6)]
+		[Display(Name = "SoyAd")]
+		public string LastName { get; set; }
 
 		[Required]
 		[EmailAddress]

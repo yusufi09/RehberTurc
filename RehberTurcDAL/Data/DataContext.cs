@@ -118,5 +118,6 @@ namespace RehberTurcDAL.Data
 		public DbSet<CafeFavorite> CafeFavorites { get; set; }
 		public DbSet<AirbnbFavorite> AirbnbFavorites { get; set; }
 		public DbSet<CityFavorite> CityFavorites { get; set; }
+		public DbSet<Mail> Mails { get; set; }
 	}
 }

@@ -1,0 +1,79 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+	Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<nav>
+    @* <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="/User/SignIn" role="tab" aria-controls="nav-sign" aria-selected="true">Sign in</a>
+        <a class="nav-item nav-link" id="nav-register-tab" data-toggle="tab" href="/User/Register" role="tab" aria-controls="nav-register" aria-selected="false">Register</a>
+    </div> *@
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <!-- Sign In Link - Yeni pencere yerine normal link -->
+        <a class="nav-item nav-link active" href="/User/SignIn" role="tab">
+            Sign in
+        </a>
+
+        <!-- Register Link - Yeni pencere yerine normal link -->
+        <a class="nav-link" href="/User/Register" role="tab">
+            Register
+        </a>
+    </div>
+</nav>
+
+<section class="sign">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-sign" role="tabpanel" aria-labelledby="nav-sign-tab">
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-warning">
+                        @TempData["success"]
+                    </div>
+                }
+                        <form asp-action="SignIn" asp-controller="User" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="mb-3">
+                                <label asp-for="FirstName" class="form-label"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="LastName" class="form-label"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label"></label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <a class="sign-form__forget-link" href="/User/ForgotPassword">Şifremi Unuttum</a>
+                            <button class="sign-form__submit" id="submit-loggin" type="submit">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                Giriş Yap
+                            </button>
+                            <p class="sign-form__text">
+                                or Login With
+                                <a href="/User/SignIn">Kayıt Ol</a>
+                            </p>
+                        </form>
+           </div>
+         </div>  
+        <ul class="sign__slideshow">
+            <li><span>Image 01</span></li>
+            <li><span>Image 02</span></li>
+            <li><span>Image 03</span></li>
+        </ul>
+</section>
+   
