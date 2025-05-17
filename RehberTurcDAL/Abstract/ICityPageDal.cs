@@ -11,5 +11,6 @@ namespace RehberTurcDAL.Abstract
 	public interface ICityPageDal:IRepostoryDal<City>
 	{
 		City GetOne(int id);
+		City Find(int id);
 	}
 }

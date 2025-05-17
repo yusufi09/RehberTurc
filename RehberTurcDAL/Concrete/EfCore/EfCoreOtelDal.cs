@@ -18,5 +18,19 @@ namespace RehberTurcDAL.Concrete.EfCore
 		{
 			_context = context;
 		}
+		public Otel GetOne(int id)
+		{
+			return _context.Otels.Include(i => i.Images).Include(i => i.Comments).FirstOrDefault(i => i.Id == id);
+		}
+		public override List<Otel> GetAll(Expression<Func<Otel, bool>> filter = null)
+		{
+			var entities = _context.Otels.Include(i => i.Images).Include(i => i.Comments).AsQueryable(); //.AsTracking():gönderilen istek takip edilmez.
+
+			if (filter != null)
+			{
+				entities = entities.Where(filter);
+			}
+			return entities.ToList();
+		}
 	}
 }

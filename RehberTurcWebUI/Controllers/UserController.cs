@@ -21,7 +21,7 @@ namespace RehberTurcWebUI.Controllers
 		public IActionResult SignIn(string returnUrl = null)
 		{
 
-			return View(new LoginViewModel() { ReturnUrl = returnUrl == null ? "/" : returnUrl });
+			return View(new LoginViewModel() { ReturnUrl = returnUrl == null ? "/Home/Index" : returnUrl });
 		}
 
 		[HttpPost]
@@ -42,7 +42,7 @@ namespace RehberTurcWebUI.Controllers
 		{
 			return View(new RegisterViewModel());
 		}
-		
+
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -59,6 +59,9 @@ namespace RehberTurcWebUI.Controllers
 					FirstName = model.FirstName,
 					LastName = model.LastName,
 					Email = model.Email,
+					Address = model.Adress,
+					City = model.City,
+					CityId = model.CityId,
 					UserName = model.FirstName.ToLower().Replace(" ", "") + model.LastName.ToLower()
 				};
 
@@ -67,24 +70,25 @@ namespace RehberTurcWebUI.Controllers
 				if (result.Succeeded)
 				{
 					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-					var url = Url.Action("ConfirmEmail", "User", new
-					{
-						token = code,
-						userId = user.Id
-					});
-					var activateUrl = "https://localhost:7266" + url;
+				var url = Url.Action("EmailConfirm", "User", new
+				{
+					token = code,
+					userId = user.Id
+				});
+				var activateUrl = "https://localhost:7266" + url;
 
-					var body = $"Sayın <strong>{user.FirstName + user.LastName};<br><br>Üyeliğinizi onaylamak için lütfen linke <a href={activateUrl}>tıklayınız</a>";
+				var body = $"Sayın <strong>{user.FirstName + user.LastName};<br><br>Üyeliğinizi onaylamak için lütfen linke <a href={activateUrl}>tıklayınız</a>";
 
-					MailHelper.SendMail(body, user.Email, "Üyelik Onayı");
+				MailHelper.SendMail(body, user.Email, "Üyelik Onayı");
 
-					TempData["success"] = "Email adresinize gönderilen aktivasyon linkine tıklayınız";
-					return RedirectToAction("SignIn");
-				}
-
+				TempData["success"] = "Email adresinize gönderilen aktivasyon linkine tıklayınız";
+				return RedirectToAction("SignIn");
+			    }
 				result.Errors.ToList().ForEach(i => ModelState.AddModelError(i.Code, i.Description));
 				return View(model);
 			}
+
+
 
 			catch (Exception e)
 			{
@@ -92,10 +96,32 @@ namespace RehberTurcWebUI.Controllers
 				return View(model);
 			}
 
-			//}
-
-
-
 		}
+		public async Task<IActionResult> ConfirmEmail(string token, string userId)
+		{
+			if (token == null || userId == null)
+			{
+				TempData["success"] = "Üyeliğiniz onaylanmadı. Lütfen sistem yöneticisi ile iletişime geçiniz.";
+				return RedirectToAction("SignIn");
+			}
+
+			var user = await _userManager.FindByIdAsync(userId);
+			if (user != null)
+			{
+				var result = await _userManager.ConfirmEmailAsync(user, token);
+
+				if (result.Succeeded)
+				{
+					TempData["success"] = "Üyeliğiniz onaylandı. Lütfen giriş yapınız.";
+					return RedirectToAction("SignIn");
+				}
+
+			}
+			TempData["success"] = "Üyeliğiniz onaylanmadı. Kullanıcı bulunamadı";
+			return RedirectToAction("SignIn");
+		}
+
+
 	}
 }
+

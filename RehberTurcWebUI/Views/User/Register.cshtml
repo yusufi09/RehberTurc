@@ -4,10 +4,7 @@
 	Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 <nav>
-    @* <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="/User/SignIn" role="tab" aria-controls="nav-sign" aria-selected="true">Sign in</a>
-        <a class="nav-item nav-link" id="nav-register-tab" data-toggle="tab" href="/User/Register" role="tab" aria-controls="nav-register" aria-selected="false">Register</a>
-    </div> *@
+    
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <!-- Sign In Link - Yeni pencere yerine normal link -->
         <a class="nav-item nav-link active" href="/User/SignIn" role="tab">
@@ -30,7 +27,7 @@
                         @TempData["success"]
                     </div>
                 }
-                        <form asp-action="SignIn" asp-controller="User" method="post">
+                        <form asp-action="Register" asp-controller="User" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="mb-3">
                                 <label asp-for="FirstName" class="form-label"></label>
@@ -57,15 +54,29 @@
                                 <input asp-for="ConfirmPassword" class="form-control" />
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
-
+                            <div class="mb-3">
+                                <label asp-for="Adress" class="form-label"></label>
+                                <input asp-for="Adress" class="form-control" />
+                                <span asp-validation-for="Adress" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="City" class="form-label"></label>
+                                <input asp-for="City" class="form-control" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div> 
+                            <div class="mb-3">
+                             <label asp-for="CityId" class="form-label"></label>
+                             <input asp-for="CityId" class="form-control" />
+                             <span asp-validation-for="CityId" class="text-danger"></span>
+                            </div>
                             <a class="sign-form__forget-link" href="/User/ForgotPassword">Şifremi Unuttum</a>
                             <button class="sign-form__submit" id="submit-loggin" type="submit">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                Giriş Yap
+                                Kayıt Ol
                             </button>
                             <p class="sign-form__text">
                                 or Login With
-                                <a href="/User/SignIn">Kayıt Ol</a>
+                                <a href="/User/SignIn"Giriş Yap</a>
                             </p>
                         </form>
            </div>

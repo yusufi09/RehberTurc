@@ -25,8 +25,44 @@ namespace RehberTurcWebUI
 			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 						  .AddEntityFrameworkStores<DataContext>()
 						  .AddDefaultTokenProviders();
+			builder.Services.Configure<IdentityOptions>(options =>
+			{
+				//password
+				options.Password.RequireDigit = true;
+				options.Password.RequireLowercase = true;
+				options.Password.RequireUppercase = true;
+				options.Password.RequireNonAlphanumeric = true;
+				options.Password.RequiredLength = 6;
 
-			
+				options.Lockout.MaxFailedAccessAttempts = 5; //5 hatalý giriþ hakký
+				options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); //5 hatalý giriþ sonrasý 5dk giriþ kilitlensin
+				options.Lockout.AllowedForNewUsers = true; //Her yeni üye için bu özelliði ver.
+
+
+				//user
+				options.User.RequireUniqueEmail = true; //Benzersiz Email zorunluluðu
+														//options.User.AllowedUserNameCharacters = ""; //Username de izin verilen özel karakterler
+
+				options.SignIn.RequireConfirmedEmail = false; //Kayýt sonrasý giriþ yapabilmek için Emaili onaylamalý
+				options.SignIn.RequireConfirmedPhoneNumber = false; //Kayýt sonrasý giriþ yapabilmek için Telefon numarasý onaylamalý
+			});
+
+			//Configure Cookie
+			builder.Services.ConfigureApplicationCookie(options =>
+			{
+				options.LoginPath = "/User/SignIn";
+				//options.LogoutPath = "/User/Logout";
+				//options.AccessDeniedPath = "/User/AccessDenied";
+				options.ExpireTimeSpan = TimeSpan.FromMinutes(60); //Oturum süresi
+				options.SlidingExpiration = true; //Herhangi bir harekette süresi tekrar baþlat
+				options.Cookie = new CookieBuilder
+				{
+					HttpOnly = true,
+					Name = "Organic.Security.Cookie",
+					SameSite = SameSiteMode.Strict //Oturumu serverdan kullanýcý browserýna taþýdýk
+				};
+			});
+
 
 			builder.Services.AddScoped<ICityPageService, CityPageManager>();
 			builder.Services.AddScoped<ICityPageDal, EfCoreCityPageDal>();
@@ -42,23 +78,13 @@ namespace RehberTurcWebUI
 
 			builder.Services.AddScoped<IMailService, MailManager>();
 			builder.Services.AddScoped<IMailDal, EfCoreMailDal>();
+
+			builder.Services.AddScoped<IOtelService, OtelManager>();
+			builder.Services.AddScoped<IOtelDal, EfCoreOtelDal>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			
 			var app = builder.Build();
 
-			//app.MapControllerRoute(
-			//   name: "cityDetail",
-			//   pattern: "CityDetail/{cityName}",
-			//   defaults: new { controller = "CityDetail", action = "Index" });
-			// Identity servislerini ekleyin
-			//builder.Services.Configure<IdentityOptions>(options =>
-			//{
-			//	options.Password.RequireDigit = false;
-			//	options.Password.RequiredLength = 6;
-			//	options.Password.RequireNonAlphanumeric = false;
-			//	options.Password.RequireUppercase = false;
-			//	options.Password.RequireLowercase = false;
-			//});
 
 			if (!app.Environment.IsDevelopment())
             {

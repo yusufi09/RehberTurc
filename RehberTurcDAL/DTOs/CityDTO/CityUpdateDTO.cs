@@ -15,7 +15,7 @@ namespace RehberTurcDAL.DTOs.CityDTO
 
 		[Required]
 		[StringLength(100)]
-		public string Title { get; set; }
+		public string Tittle { get; set; }
 
 		[Required]
 		public string Description { get; set; }

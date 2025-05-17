@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RehberTurcBLL.Abstract;
 
 namespace RehberTurcWebUI.ViewComponents.CityDetail
 {
 	public class _CityDetailListingHeaderComponentPartial : ViewComponent
 	{
-		public IViewComponentResult Invoke()
+		private readonly ICityPageService _cityService;
+
+		public _CityDetailListingHeaderComponentPartial(ICityPageService cityService)
 		{
-			return View();
+			_cityService = cityService;
+		}
+		public IViewComponentResult Invoke(int id)
+		{
+			return View(_cityService.Find(id));
 		}
 	}
 }

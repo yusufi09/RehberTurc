@@ -16,10 +16,10 @@ namespace RehberTurcWebUI.Controllers
 			_userService = userService;
 			_cityPageService = cityPageService;
 		}
-		public IActionResult Index()
+		public IActionResult Index(int id)
 		{
 
-			return View(_cityPageService.GetAll());
+			return View(_cityPageService.GetOne(id));
 		}
 	}
 }

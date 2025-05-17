@@ -16,5 +16,7 @@ namespace RehberTurcBLL.Abstract
 		void Delete(City entity);
 		City GetOne(int id);
 		City GetById(int id);
+
+		City Find(int id);
 	}
 }

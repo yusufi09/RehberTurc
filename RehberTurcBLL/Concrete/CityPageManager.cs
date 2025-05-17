@@ -1,4 +1,5 @@
-﻿using RehberTurcBLL.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using RehberTurcBLL.Abstract;
 using RehberTurcDAL.Abstract;
 using RehberTurcEntity.Class;
 using System;
@@ -48,5 +49,11 @@ namespace RehberTurcBLL.Concrete
 		{
 			return _cityDal.GetById(id);
 		}
+		public City Find(int id)
+		{
+			return _cityDal.GetById(id);
+		}
+
+		
 	}
 }

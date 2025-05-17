@@ -1,11 +1,15 @@
-﻿<section class="listing-detail">
+﻿@model City
+<section class="listing-detail">
 
 	<div class="listing-detail__gal">
 		<picture>
-			<source media="(min-width: 900px)" srcset="~/html/images/3.png">
+			@* @foreach (var item in Model)
+			{ *@
+				<source media="(min-width: 900px)" srcset="~/html/images/3.png">
 			<source media="(min-width: 568px)" srcset="~/html/images/3.png">
-			<source media="(min-width: 200px)" srcset="~/html/imges/3.png">
+			<source media="(min-width: 200px)" srcset="~/html/images/3.png">
 			<img src="~/html/images/3.png" alt="">
+		@* 	} *@
 		</picture>
 		<div class="listing-detail__gal-box">
 			<div class="container">

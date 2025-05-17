@@ -40,9 +40,9 @@ namespace RehberTurcBLL.Concrete
 		{
 			_otelDal.Update(entity);
 		}
-		public Otel GetOne(Expression<Func<Otel, bool>> filter = null)
+		public Otel GetOne(int id)
 		{
-			return _otelDal.GetOne(filter);
+			return _otelDal.GetOne(id);
 		}
 		public Otel GetById(int id)
 		{

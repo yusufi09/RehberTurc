@@ -9,5 +9,6 @@ namespace RehberTurcDAL.Abstract
 {
 	public interface IOtelDal:IRepostoryDal<Otel>
 	{
+		Otel GetOne(int id);
 	}
 }

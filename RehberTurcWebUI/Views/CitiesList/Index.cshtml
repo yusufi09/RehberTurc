@@ -1,0 +1,72 @@
+﻿@model List<City>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="trending-places">
+	<div class="container">
+
+		<!-- section-header module -->
+		<div class="section-header">
+			<h1 class="section-header__title">
+				Türkiye
+			</h1>
+			<p class="section-header__description">
+				Şehirler
+			</p>
+		</div>
+		<!-- end section-header module -->
+
+
+		<div class="trending-places__box owl-wrapper">
+			<div class="owl-carousel owl-theme" data-num="5" style="opacity: 1; display: block;">
+
+				<div class="owl-wrapper-outer">
+					<div class="owl-wrapper" style="width: 2880px; left: 0px; display: block; transition: all; transform: translate3d(0px, 0px, 0px);">
+						<div class="owl-item" style="width: 240px;">
+							<div class="item">
+								@foreach (var item in Model)
+								{
+									<!-- place-post module -->
+									<div class="place-post">
+										<div class="place-post__gal-box">
+											<img class="place-post__image" src="~/html/images/5.png" alt="place-image">
+											<span class="place-post__rating">9.3</span>
+											<a class="place-post__like" href="/CityDetail/Index?id=@item.Id"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+										</div>
+										<div class="place-post__content">
+											
+											<h2 class="place-post__title">
+												<a href="/CityDetail/Index?id=@item.Id">@item.Tittle</a>
+											</h2>
+											<p class="place-post__description">
+												@item.Country
+											
+												<span class="place-post__description-review">
+													<i class="fa fa-comment-o" aria-hidden="true"></i>
+													@item.CreatedDate.ToString("dd.MM.yyyy")
+												</span>
+											</p>
+											<p class="place-post__address">
+												<i class="fa fa-map-marker" aria-hidden="true"></i>
+												@item.Country
+											</p>
+										</div>
+									</div>
+									<!-- end place-post module -->
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="center-button" style="margin-top: 400px;">
+			<a class="text-btn" href="#">
+				View All Places
+			</a>
+		</div>
+	</div>
+</section>

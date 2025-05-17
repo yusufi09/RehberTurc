@@ -29,7 +29,6 @@
     <Folder Include="DTOs\CafeDTO\" />
     <Folder Include="DTOs\CategoryDTO\" />
     <Folder Include="DTOs\KulturDTO\" />
-    <Folder Include="DTOs\OtelDTO\" />
   </ItemGroup>
 
 </Project>

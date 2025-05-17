@@ -20,7 +20,7 @@ namespace RehberTurcDAL.Concrete.EfCore
 		}
 		public  City GetOne(int id)
 		{
-			return _context.Cities.Include(i => i.cityComments).Include(i => i.Images).FirstOrDefault(i => i.Id ==id);
+			return _context.Cities.Include(i => i.Images).Include(i => i.cityComments).FirstOrDefault(i => i.Id ==id);
 		}
 		public override List<City> GetAll(Expression<Func<City, bool>> filter = null)
 		{
@@ -31,6 +31,11 @@ namespace RehberTurcDAL.Concrete.EfCore
 				entities = entities.Where(filter);
 			}
 			return entities.ToList();
+		}
+
+		public City Find(int id)
+		{
+			return _context.Cities.Include(i => i.Images).FirstOrDefault(i => i.Id == id);
 		}
 	}
 }

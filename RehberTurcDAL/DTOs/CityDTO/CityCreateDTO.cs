@@ -14,7 +14,7 @@ namespace RehberTurcDAL.DTOs.CityDTO
 		
 			[Required(ErrorMessage = "Şehir adı zorunludur")]
 			[StringLength(100, ErrorMessage = "Şehir adı maksimum 100 karakter olabilir")]
-			public string Title { get; set; }
+			public string Tittle { get; set; }
 
 			[Required]
 			[StringLength(2000)]
@@ -23,7 +23,7 @@ namespace RehberTurcDAL.DTOs.CityDTO
 			[Required]
 			[Display(Name = "Ülke")]
 			public int CountryId { get; set; }
-
+		public DateTime CreatedDate { get; set; }
 
 		public bool IsFavorite { get; set; }
 		public List<CityComment> comments { get; set; }

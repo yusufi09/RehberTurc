@@ -14,7 +14,7 @@ namespace RehberTurcBLL.Abstract
 		void Create(Otel entity);
 		void Update(Otel entity);
 		void Delete(Otel entity);
-		Otel GetOne(Expression<Func<Otel, bool>> filter = null);
+		Otel GetOne(int id);
 		Otel GetById(int id);
 	}
 }
