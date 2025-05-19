@@ -23,15 +23,15 @@
 			<div class="owl-carousel owl-theme" data-num="5" style="opacity: 1; display: block;">
 
 				<div class="owl-wrapper-outer">
-					<div class="owl-wrapper" style="width: 2880px; left: 0px; display: block; transition: all; transform: translate3d(0px, 0px, 0px);">
-						<div class="owl-item" style="width: 240px;">
+					<div class="owl-wrapper" style="width: 2000px; left: 0px; display: block; transition: all; transform: translate3d(0px, 0px, 0px);">
+						<div class="owl-item" style="width: 340px;">
 							<div class="item">
 								@foreach (var item in Model)
 								{
 									<!-- place-post module -->
 									<div class="place-post">
 										<div class="place-post__gal-box">
-											<img class="place-post__image" src="~/html/images/5.png" alt="place-image">
+											<img class="place-post__image" src="~/html/images/@item.Images[0].Url" alt="place-image">
 											<span class="place-post__rating">9.3</span>
 											<a class="place-post__like" href="/CityDetail/Index?id=@item.Id"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 										</div>

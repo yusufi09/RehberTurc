@@ -13,7 +13,7 @@ namespace RehberTurcWebUI.ViewComponents.CityDetail
 		}
 		public IViewComponentResult Invoke(int id)
 		{
-			return View(_cityService.Find(id));
+			return View(_cityService.GetOne(id));
 		}
 	}
 }

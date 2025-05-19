@@ -24,5 +24,9 @@ namespace RehberTurcWebUI.Controllers
 			var otels = _otelService.GetAll();
 			return View(otels);
 		}
+		public IActionResult Confirm()
+		{
+			return View();
+		}
 	}
 }

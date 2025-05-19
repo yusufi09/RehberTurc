@@ -1,0 +1,228 @@
+﻿@{
+    ViewData["Title"] = "Confirm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-xxl-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- Nav tabs --><div class="col-sm mb-2">
+                    <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                            <input type="text" id="searchInput" class="form-control search" placeholder="Ara...">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs nav-justified nav-border-top nav-border-top-success mb-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#allOffer-tab" role="tab" aria-selected="true">
+                            <i class="ri-file-copy-2-line align-middle me-1">
+                            </i> Bekleyen Teklifler
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#completedOffer-tab" role="tab" aria-selected="false" tabindex="-1">
+                            <i class="ri-task-line me-1 align-middle"></i> Sipariş Teklifler
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab" href="#draftOffer-tab" role="tab" aria-selected="false" tabindex="-1"><i class="ri-file-forbid-line align-middle me-1"></i> Taslak Teklifler</a></li>
+                </ul>
+                <div class="tab-content text-center">
+                    <div class="tab-pane active show" id="allOffer-tab" role="tabpanel">
+                        <div class="table-responsive">
+                            <table id="pendingOffersTable" class="table dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th data-sort="teklifno" class="sortable">
+                                            Teklif No
+                                            <span class="sort-icon"></span>
+                                        </th>
+                                        <th data-sort="firmaadi" class="sortable">
+                                            Firma Adı
+                                            <span class="sort-icon">
+                                            </span>
+                                        </th>
+                                        <th data-sort="musteriadi" class="sortable">
+                                            Müşteri Adı
+                                            <span class="sort-icon"></span>
+                                        </th>
+                                        <th data-sort="olusturmatarihi" class="sortable">Oluşturma Tarihi<span class="sort-icon"></span></th>
+                                        <th data-sort="toplamlira" class="sortable">Toplam (₺)<span class="sort-icon"></span></th>
+                                        <th data-sort="toplamdolar" class="sortable">Toplam ($)<span class="sort-icon"></span></th>
+                                        <th data-sort="toplameuro" class="sortable">Toplam (€)<span class="sort-icon"></span></th>
+                                        <th>Durumu</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-column="teklifno">UC250518-00003</td>
+                                        <td data-column="firmaadi">Zenisa Mühendislik</td>
+                                        <td data-column="musteriadi">İbrahim Çakır</td>
+                                        <td data-column="olusturmatarihi">18.05.2025 04:22</td>
+                                        <td data-column="toplamlira">1.800,00 ₺</td>
+                                        <td data-column="toplamdolar">
+                                            -
+                                        </td>
+                                        <td data-column="toplameuro">-</td>
+                                        <td><span class="badge bg-primary">Beklemede</span></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="true" class="show">
+                                                    <i class="ri-more-2-fill"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1" data-popper-placement="bottom-end">
+                                                    <li>
+                                                        <a class="dropdown-item" href="/Areas/Offer/OfferDetails?id=7">
+                                                            <i class="ri-eye-fill align-bottom me-2 text-muted"></i> Görüntüle
+                                                        </a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Düzenle</a></li>
+                                                    <li><a class="dropdown-item delete-offer" href="javascript:void(0);" data-offer-id="7"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end mt-3 pagination-container" style="display: none !important;">
+                                <div class="pagination-wrap hstack gap-2">
+                                    <a class="page-item pagination-prev disabled" href="javascript:void(0);">Geri</a><ul class="pagination listjs-pagination mb-0" data-table="pendingOffersTable">
+                                    </ul><a class="page-item pagination-next" href="javascript:void(0);">İleri</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="tab-pane" id="completedOffer-tab" role="tabpanel">
+                        <div class="table-responsive">
+                            <table id="completedOffersTable" class="table dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th data-sort="teklifno" class="sortable">
+                                            Teklif No<span class="sort-icon"></span>
+                                        </th>
+                                        <th data-sort="firmaadi" class="sortable">
+                                            Firma Adı
+                                            <span class="sort-icon"></span>
+                                        </th>
+                                        <th data-sort="musteriadi" class="sortable">Müşteri Adı<span class="sort-icon"></span></th>
+                                        <th data-sort="olusturmatarihi" class="sortable">
+                                            Oluşturma Tarihi
+                                            <span class="sort-icon"></span>
+                                        </th>
+                                        <th data-sort="toplamlira" class="sortable">Toplam (₺)<span class="sort-icon"></span></th>
+                                        <th data-sort="toplamdolar" class="sortable">Toplam ($)<span class="sort-icon"></span></th>
+                                        <th data-sort="toplameuro" class="sortable">Toplam (€)<span class="sort-icon"></span></th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-column="teklifno">UC250517-00001</td>
+                                        <td data-column="firmaadi">Zenisa Mühendislik</td>
+                                        <td data-column="musteriadi">İbrahim Çakır</td>
+                                        <td data-column="olusturmatarihi">17.05.2025 17:40</td>
+                                        <td data-column="toplamlira">27.000,00 ₺</td>
+                                        <td data-column="toplamdolar">-</td>
+                                        <td data-column="toplameuro">-</td>
+                                        <td class="text-center align-middle">
+                                            <div class="d-flex gap-2 justify-content-center">
+                                                <div class="edit"><button class="btn btn-sm btn-primary edit-item-btn" data-bs-toggle="modal" data-bs-target="#employeeModal" data-id="5">Düzenle</button></div><div class="remove">
+                                                    <button class="btn btn-sm btn-danger remove-item-btn" data-id="5">Sil</button>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end mt-3 pagination-container" style="display: none !important;">
+                                <div class="pagination-wrap hstack gap-2">
+                                    <a class="page-item pagination-prev disabled" href="javascript:void(0);">Geri</a><ul class="pagination listjs-pagination mb-0" data-table="completedOffersTable">
+                                    </ul><a class="page-item pagination-next" href="javascript:void(0);">İleri</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="draftOffer-tab" role="tabpanel">
+                        <div class="table-responsive">
+                            <table id="draftOffersTable" class="table dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th data-sort="teklifno" class="sortable">
+                                            Teklif No
+                                            <span class="sort-icon">
+                                            </span>
+                                        </th>
+                                        <th data-sort="firmaadi" class="sortable">
+                                            Firma Adı
+                                            <span class="sort-icon">
+                                            </span>
+                                        </th>
+                                        <th data-sort="musteriadi" class="sortable">
+                                            Müşteri Adı
+                                            <span class="sort-icon"></span>
+                                        </th>
+                                        <th data-sort="olusturmatarihi" class="sortable">Oluşturma Tarihi<span class="sort-icon"></span></th>
+                                        <th data-sort="urunsayisi" class="sortable">Ürün Sayısı<span class="sort-icon"></span></th>
+                                        <th data-sort="toplamlira" class="sortable">Toplam (₺)<span class="sort-icon"></span></th>
+                                        <th data-sort="toplamdolar" class="sortable">
+                                            Toplam ($)<span class="sort-icon">
+                                            </span>
+                                        </th>
+                                        <th data-sort="toplameuro" class="sortable">Toplam (€)<span class="sort-icon"></span></th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-column="teklifno">
+                                            UC250517-00002
+                                        </td>
+                                        <td data-column="firmaadi">Demirci Kardeşler Grup Limited Şirketi</td>
+                                        <td data-column="musteriadi">
+                                            Gülay Çakır
+                                        </td>
+                                        <td data-column="olusturmatarihi">17.05.2025 14:41</td>
+                                        <td data-column="urunsayisi">1</td>
+                                        <td data-column="toplamlira">8.505,00 ₺</td>
+                                        <td data-column="toplamdolar">-</td>
+                                        <td data-column="toplameuro">
+                                            -
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <div class="d-flex gap-2 justify-content-center">
+                                                <div class="edit">
+                                                    <button class="btn btn-sm btn-primary edit-draft" data-offer-number="UC250517-00002">Düzenle</button>
+                                                </div><div class="remove"><button class="btn btn-sm btn-danger delete-offer" data-offer-id="6">Sil</button></div><div class="convert"><button class="btn btn-sm btn-success convert-to-offer" data-offer-id="6">Onayla</button></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-column="teklifno">TEK-2025-003</td>
+                                        <td data-column="firmaadi">DEF Mühendislik Ltd. Şti.</td>
+                                        <td data-column="musteriadi">Ayşe Demir</td>
+                                        <td data-column="olusturmatarihi">12.05.2025 09:15</td>
+                                        <td data-column="urunsayisi">1</td>
+                                        <td data-column="toplamlira">-</td>
+                                        <td data-column="toplamdolar">2.500,00 $</td>
+                                        <td data-column="toplameuro">-</td>
+                                        <td class="text-center align-middle">
+                                            <div class="d-flex gap-2 justify-content-center">
+                                                <div class="edit">
+                                                    <button class="btn btn-sm btn-primary edit-draft" data-offer-number="TEK-2025-003">Düzenle</button>
+                                                </div><div class="remove"><button class="btn btn-sm btn-danger delete-offer" data-offer-id="3">Sil</button></div><div class="convert"><button class="btn btn-sm btn-success convert-to-offer" data-offer-id="3">Onayla</button></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table><div class="d-flex justify-content-end mt-3 pagination-container" style="display: none !important;"><div class="pagination-wrap hstack gap-2"><a class="page-item pagination-prev disabled" href="javascript:void(0);">Geri</a><ul class="pagination listjs-pagination mb-0" data-table="draftOffersTable"></ul><a class="page-item pagination-next" href="javascript:void(0);">İleri</a></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+</div>
+

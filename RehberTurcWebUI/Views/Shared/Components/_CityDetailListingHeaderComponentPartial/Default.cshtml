@@ -3,20 +3,19 @@
 
 	<div class="listing-detail__gal">
 		<picture>
-			@* @foreach (var item in Model)
-			{ *@
-				<source media="(min-width: 900px)" srcset="~/html/images/3.png">
+			
+				@* <source media="(min-width: 900px)" srcset="~/html/images/3.png">
 			<source media="(min-width: 568px)" srcset="~/html/images/3.png">
-			<source media="(min-width: 200px)" srcset="~/html/images/3.png">
-			<img src="~/html/images/3.png" alt="">
-		@* 	} *@
+			<source media="(min-width: 200px)" srcset="~/html/images/3.png"> *@
+			<img src="~/html/images/@Model.Images[0].Url" alt="">
+
 		</picture>
 		<div class="listing-detail__gal-box">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
 						<p class="listing-detail__rate">9.3 <span>/ 10</span></p>
-						<h1 class="listing-detail__title">Türkiye/İstanbul</h1>
+						<h1 class="listing-detail__title">@* @Model.Country.Name/ *@@Model.Tittle</h1>
 						<p class="listing-detail__address"><i class="fa fa-map-marker"></i>1149 3rd St (Wilshire), Santa Monica</p>
 					</div>
 					<div class="col-md-6">

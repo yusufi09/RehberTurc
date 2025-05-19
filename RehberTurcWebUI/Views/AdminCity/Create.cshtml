@@ -18,7 +18,7 @@
                     {
                         <div class="alert alert-success">@TempData["SuccessMessage"]</div>
                     }
-                    <form asp-action="Create" method="post">
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
                         @Html.AntiForgeryToken()
                         
                         <table class="table table-borderless align-middle float-end">

@@ -7,10 +7,12 @@
 		<div class="owl-carousel" data-num="4">
 			@foreach (var item in Model)
 			{
-				<div class="item">
-					<img src="~/html/images/@item.Images" alt="">
-				</div>
-			}
+				@foreach (var image in item.Images)
+				{
+					<div class="item">
+						<img src="~/html/images/@image.Url" alt="">
+					</div>
+				}}
 		</div>
 	</div>
 </div>
