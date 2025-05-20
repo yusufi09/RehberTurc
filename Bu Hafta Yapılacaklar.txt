@@ -1,7 +1,14 @@
-****Bu Hafta Yapılacaklar****
-*customer bağlantılarını İdentityusera taşı
-*giriş kayıt ol sayfasını bitir
-*propert(mülk sahhipleri iççin giriş sayfasını oluştur)
-*Database güncelle
-*Favori Claslarını oluştur
-*Duruma göre Otel Detayı Sayfasına Başla
+****EVENTs****
+*Database(
+cityId 
+başlık
+acıkama
+görsel
+başlangıç/bitiş tarihi
+konum
+
+)
+*futbol sayfası yap maç takvimi gibisinden 
+**listing başvuru sayfasını ekle(onay bölgesine bağla(adminde))kayıt yaptırt.
+
+

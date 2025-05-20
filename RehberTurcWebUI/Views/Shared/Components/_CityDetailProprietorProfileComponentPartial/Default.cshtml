@@ -1,121 +1,305 @@
 ﻿﻿@*Profil Sınıfları Bilgileri *@ 
 <div class="col-lg-4">
-	<div class="sidebar">
+    <div class="sidebar">
+        <div class="takvim-wrapper">
+            <div class="takvim-header">
+                <button onclick="oncekiAy()">‹</button>
+                <h2 id="ayIsim">Mayıs 2025</h2>
+                <button onclick="sonrakiAy()">›</button>
+            </div>
+            <div class="hafta-gunleri">
+                <div>Pzt</div><div>Sal</div><div>Çar</div><div>Per</div><div>Cum</div><div>Cmt</div><div>Paz</div>
+            </div>
+            <div class="takvim-gunler" id="gunler"></div>
 
-		<div id="mapSingle" data-latitude="51.5344894" data-longitude="-0.1370057" data-map-icon="la la-cutlery">
-		</div>
+            <h3>Etkinlikler</h3>
+            <div id="etkinlikler"></div>
+        </div>
 
-		<div class="sidebar__widget sidebar__widget-listing-details">
-			<h2 class="sidebar__widget-title">
-				Details
-			</h2>
-			<ul class="sidebar__listing-list">
-				<li>
-					<i class="la la-map-marker"></i>
-					305 Franklin Ave (at Lafayette Ave), Brooklyn
-				</li>
-				<li>
-					<i class="la la-mobile-phone"></i>
-					+44 20 7336 8898
-				</li>
-				<li>
-					<i class="la la-link"></i>
-					https://yourrestaurant.com
-				</li>
-				<li>
-					<i class="la la-clock-o"></i>
-					<span class="color-close">Closed until Noon</span>
-					<div>
-						<p>
-							Mon–Thu, Sun <span class="right-align">Noon–Midnight</span>
-						</p>
-						<p>
-							Fri–Sat <span class="right-align">Noon–1:00 AM</span>
-						</p>
-					</div>
-				</li>
-			</ul>
-		</div>
+        <style>
+            .takvim-wrapper {
+                max-width: 400px;
+                background: white;
+                border-radius: 12px;
+                padding: 15px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+                font-family: sans-serif;
+            }
 
-		<div class="sidebar__widget sidebar__widget-author">
-			<h2 class="sidebar__widget-title">
-				Author
-			</h2>
+            .takvim-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
 
-			<!-- Author-wrapper module -->
-			<div class="author-wrapper">
-				<div class="author-wrapper__profile">
-					<div class="row">
-						<div class="col-7">
-							<div class="author-wrapper__content">
-								<a class="author-wrapper__image" href="#"><img src="~/html/upload/avatar1.jpg" alt=""></a>
-								<h3 class="author-wrapper__title">
-									<a href="#">Matt Smith</a>
-									<span class="author-wrapper__location">
-										New York
-									</span>
-								</h3>
-							</div>
-						</div>
-						<div class="col-5">
-							<a class="author-wrapper__btn follow-btn" href="#">
-								<i class="la la-eye"></i>
-								Follow
-							</a>
-						</div>
-					</div>
-				</div>
-				<ul class="author-wrapper__list">
-					<li>
-						<span>42</span>
-						List
-					</li>
-					<li>
-						<span>12</span>
-						Followers
-					</li>
-					<li>
-						<span>34</span>
-						Following
-					</li>
-					<li>
-						<span>56</span>
-						Reviews
-					</li>
-				</ul>
-			</div>
-			<!-- End Author-wrapper module-->
-		</div>
+                .takvim-header h2 {
+                    margin: 0;
+                    font-size: 20px;
+                }
 
-		<div class="sidebar__widget sidebar__widget-tags">
-			<h2 class="sidebar__widget-title">
-				Listing Tags
-			</h2>
-			<ul class="sidebar__tags-list">
-				<li><a href="#">Cafe</a></li>
-				<li><a href="#">Restaurant</a></li>
-				<li><a href="#">food</a></li>
-				<li><a href="#">Romantic</a></li>
-				<li><a href="#">Cozy</a></li>
-				<li><a href="#">Sea Food</a></li>
-				<li><a href="#">Healthy Food</a></li>
-				<li><a href="#">Pasta</a></li>
-			</ul>
-		</div>
+                .takvim-header button {
+                    background: #eee;
+                    border: none;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
 
-		<div class="sidebar__widget sidebar__advertise">
-			<span class="sidebar__advertise-title">
-				advertising box
-			</span>
-			<img src="upload/add.jpg" alt="">
-		</div>
+            .hafta-gunleri {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                text-align: center;
+                font-weight: bold;
+                color: #777;
+                margin-bottom: 5px;
+            }
 
-	</div>
+            .takvim-gunler {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+
+            .gun {
+                padding: 10px;
+                text-align: center;
+                border-radius: 6px;
+                cursor: pointer;
+                background: #f2f2f2;
+            }
+
+                .gun:hover {
+                    background: #ddd;
+                }
+
+            .secili {
+                background: black;
+                color: white;
+            }
+
+            .event-card {
+                background: white;
+                border-radius: 10px;
+                padding: 10px;
+                margin-top: 10px;
+                display: flex;
+                gap: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+                .event-card img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 8px;
+                    object-fit: cover;
+                }
+
+            .event-info {
+                font-size: 14px;
+            }
+        </style>
+
+        <script>
+            const ayIsimleri = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+            let seciliTarih = new Date();
+
+            const etkinlikVerisi = {
+              "2025-05-18": [
+                {
+                  baslik: "Tarkan Konseri",
+                  saat: "20:00",
+                  yer: "Harbiye Açıkhava",
+                  gorsel: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tarkan_in_2019.jpg/1200px-Tarkan_in_2019.jpg"
+                }
+              ],
+              "2025-05-19": [
+                {
+                  baslik: "BKM Mutfak",
+                  saat: "21:00",
+                  yer: "Beşiktaş",
+                  gorsel: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Stand-up_Comedy_Show.jpg"
+                }
+              ]
+            };
+
+            function takvimiOlustur() {
+              const gunlerEl = document.getElementById("gunler");
+              const ayBaslik = document.getElementById("ayIsim");
+
+              const y = seciliTarih.getFullYear();
+              const m = seciliTarih.getMonth();
+              const ilkGun = new Date(y, m, 1);
+              const sonGun = new Date(y, m + 1, 0);
+              const baslangicIndex = (ilkGun.getDay() + 6) % 7;
+
+              ayBaslik.innerText = `${ayIsimleri[m]} ${y}`;
+              gunlerEl.innerHTML = "";
+
+              for (let i = 0; i < baslangicIndex; i++) {
+                gunlerEl.innerHTML += `<div></div>`;
+              }
+
+              for (let gun = 1; gun <= sonGun.getDate(); gun++) {
+                const tarihStr = `${y}-${(m+1).toString().padStart(2, '0')}-${gun.toString().padStart(2, '0')}`;
+                const gunEl = document.createElement("div");
+                gunEl.className = "gun";
+                gunEl.textContent = gun;
+
+                gunEl.addEventListener("click", () => {
+                  document.querySelectorAll(".gun").forEach(g => g.classList.remove("secili"));
+                  gunEl.classList.add("secili");
+                  etkinlikleriGoster(tarihStr);
+                });
+
+                gunlerEl.appendChild(gunEl);
+              }
+            }
+
+            function etkinlikleriGoster(tarih) {
+              const etkinlikAlan = document.getElementById("etkinlikler");
+              etkinlikAlan.innerHTML = "";
+
+              const liste = etkinlikVerisi[tarih];
+              if (!liste) {
+                etkinlikAlan.innerHTML = "<p>Bu gün için etkinlik yok.</p>";
+                return;
+              }
+
+              liste.forEach(e => {
+                etkinlikAlan.innerHTML += `
+                  <div class="event-card">
+                    <img src="${e.gorsel}" alt="${e.baslik}" />
+                    <div class="event-info">
+                      <strong>${e.baslik}</strong><br />
+                      ${e.saat} – ${e.yer}
+                    </div>
+                  </div>
+                `;
+              });
+            }
+
+            function oncekiAy() {
+              seciliTarih.setMonth(seciliTarih.getMonth() - 1);
+              takvimiOlustur();
+            }
+
+            function sonrakiAy() {
+              seciliTarih.setMonth(seciliTarih.getMonth() + 1);
+              takvimiOlustur();
+            }
+
+            // Başlangıç
+            takvimiOlustur();
+        </script>
+
+
+       
+        <div class="sidebar__widget sidebar__widget-listing-details">
+            <h2 class="sidebar__widget-title">
+                Details
+            </h2>
+            <ul class="sidebar__listing-list">
+                <li>
+                    <i class="la la-map-marker"></i>
+                    305 Franklin Ave (at Lafayette Ave), Brooklyn
+                </li>
+                <li>
+                    <i class="la la-mobile-phone"></i>
+                    +44 20 7336 8898
+                </li>
+                <li>
+                    <i class="la la-link"></i>
+                    https://yourrestaurant.com
+                </li>
+                <li>
+                    <i class="la la-clock-o"></i>
+                    <span class="color-close">Closed until Noon</span>
+                    <div>
+                        <p>
+                            Mon–Thu, Sun <span class="right-align">Noon–Midnight</span>
+                        </p>
+                        <p>
+                            Fri–Sat <span class="right-align">Noon–1:00 AM</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar__widget sidebar__widget-author">
+            <h2 class="sidebar__widget-title">
+                Author
+            </h2>
+
+            <!-- Author-wrapper module -->
+            <div class="author-wrapper">
+                <div class="author-wrapper__profile">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="author-wrapper__content">
+                                <a class="author-wrapper__image" href="#"><img src="~/html/upload/avatar1.jpg" alt=""></a>
+                                <h3 class="author-wrapper__title">
+                                    <a href="#">Matt Smith</a>
+                                    <span class="author-wrapper__location">
+                                        New York
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <a class="author-wrapper__btn follow-btn" href="#">
+                                <i class="la la-eye"></i>
+                                Follow
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="author-wrapper__list">
+                    <li>
+                        <span>42</span>
+                        List
+                    </li>
+                    <li>
+                        <span>12</span>
+                        Followers
+                    </li>
+                    <li>
+                        <span>34</span>
+                        Following
+                    </li>
+                    <li>
+                        <span>56</span>
+                        Reviews
+                    </li>
+                </ul>
+            </div>
+            <!-- End Author-wrapper module-->
+        </div>
+
+        <div class="sidebar__widget sidebar__widget-tags">
+            <h2 class="sidebar__widget-title">
+                Listing Tags
+            </h2>
+            <ul class="sidebar__tags-list">
+                <li><a href="#">Cafe</a></li>
+                <li><a href="#">Restaurant</a></li>
+                <li><a href="#">food</a></li>
+                <li><a href="#">Romantic</a></li>
+                <li><a href="#">Cozy</a></li>
+                <li><a href="#">Sea Food</a></li>
+                <li><a href="#">Healthy Food</a></li>
+                <li><a href="#">Pasta</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar__widget sidebar__advertise">
+            <span class="sidebar__advertise-title">
+                advertising box
+            </span>
+            <img src="upload/add.jpg" alt="">
+        </div>
+
+    </div>
 </div>
-		</div>
-	</div>
-</div>
 
-
-
-		</section>

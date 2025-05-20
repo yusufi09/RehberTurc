@@ -14,15 +14,15 @@
 				<!-- end section-header module -->
 
 
-				<div class="top-experience__box owl-wrapper">
-					<div class="owl-carousel" data-num="3">
-                        @foreach (var item in Model)
-                        {
-                            <div class="item">
-                                <!-- place-gal module -->
-                                <div class="place-gal">
-                                    <img class="place-gal__image" src="~/html/images/@item.Image" alt="place-image">
-                                    <div class="place-gal__content">
+	<div class="top-experience__box owl-wrapper">
+		<div class="owl-carousel" data-num="3">
+                     @foreach (var item in Model)
+                     {
+                         <div class="item">
+                             <!-- place-gal module -->
+                             <div class="place-gal">
+                                 <img class="place-gal__image" src="~/html/images/@item.Image" alt="place-image">
+                                 <div class="place-gal__content">
                                         <h2 class="place-gal__title">
                                             <a href="CitiesList/Index">
                                                 <img src="~/html/images/@item.Byrk" alt="">
@@ -42,12 +42,12 @@
 
                                         </a>
                                     </div>
-                                </div>
-                                <!-- end place-gal module -->
-                            </div>
-                        }
-					</div>
-				</div>
+                             </div>
+                             <!-- end place-gal module -->
+                         </div>
+                     }
+		</div>
+	</div>
 
 	</div>
 </section>

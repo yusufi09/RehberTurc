@@ -19,7 +19,16 @@ namespace RehberTurcDAL.Concrete.EfCore
 		{
 			_context = context;
 		}
+		public override List<Category> GetAll(Expression<Func<Category, bool>> filter = null)
+		{
+			var entities = _context.Categories.Include(i => i.Otels).Include(i => i.Cafes).Include(i=> i.Kulturs).Include(i=>i.Airbnbs).Include(i=>i.Cars).AsQueryable(); //.AsTracking():gönderilen istek takip edilmez.
 
+			if (filter != null)
+			{
+				entities = entities.Where(filter);
+			}
+			return entities.ToList();
+		}
 
 	}
 }

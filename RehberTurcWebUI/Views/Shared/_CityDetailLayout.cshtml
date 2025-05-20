@@ -106,6 +106,40 @@
 			</nav>
 		</header>
 
+		<style>
+			.event-card {
+				background: white;
+				border-radius: 10px;
+				padding: 10px;
+				margin-bottom: 15px;
+				display: flex;
+				gap: 10px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			}
+
+				.event-card img {
+					width: 80px;
+					height: 80px;
+					border-radius: 8px;
+					object-fit: cover;
+				}
+
+			.event-info {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.no-events {
+				font-style: italic;
+				color: #888;
+			}
+		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+			  renderEvents("2025-05-18");
+			});
+		</script>
 
       
 		@RenderBody()
