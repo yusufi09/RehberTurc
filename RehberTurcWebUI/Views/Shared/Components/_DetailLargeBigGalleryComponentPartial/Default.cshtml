@@ -1,11 +1,12 @@
-﻿
+﻿@model Otel
 <div class="listing-detail__gal">
 	            <picture>
-	            	<source media="(min-width: 991px)" srcset="~/html/upload/single-large.jpg">
-	            	<source media="(min-width: 568px)" srcset="~/html/upload/single-large-2.jpg">
-	            	<source media="(min-width: 200px)" srcset="~/html/upload/single-large-3.jpg">
-		<img src="~/html/upload/single-large-3.jpg" alt="">
-	            
+
+	@* 	<source media="(min-width: 900px)" srcset="~/html/images/3.png">
+			<source media="(min-width: 568px)" srcset="~/html/images/3.png">
+			<source media="(min-width: 200px)" srcset="~/html/images/3.png"> *@
+		<img src="~/html/images/@Model.Images[1].Url" alt="">
+
 	            </picture>
 			
 	<div class="listing-detail__gal-box">

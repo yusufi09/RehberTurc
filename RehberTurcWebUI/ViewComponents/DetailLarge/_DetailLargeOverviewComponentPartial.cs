@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RehberTurcBLL.Abstract;
 
 namespace RehberTurcWebUI.ViewComponents.DetailLarge
 {
 	public class _DetailLargeOverviewComponentPartial : ViewComponent
 	{
-		public IViewComponentResult Invoke()
+		private readonly IOtelService _otelService;
+		public _DetailLargeOverviewComponentPartial(IOtelService otelService)
 		{
-			return View();
+			_otelService = otelService;
+			
+		}
+		public IViewComponentResult Invoke(int id)
+		{
+			return View(_otelService.GetOne(id));
 		}
 	}
 }

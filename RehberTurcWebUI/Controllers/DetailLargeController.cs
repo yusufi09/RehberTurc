@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RehberTurcBLL.Abstract;
 
 namespace RehberTurcWebUI.Controllers
 {
     public class DetailLargeController : Controller
     {
-        public IActionResult Index()
+        private readonly IOtelService _otelService;
+		public DetailLargeController(IOtelService otelService)
+		{
+            _otelService = otelService;
+			
+		}
+		public IActionResult Index(int id)
         {
-            return View();
+            return View(_otelService.GetOne(id));
         }
     }
 }

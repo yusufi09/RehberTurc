@@ -26,6 +26,7 @@ namespace RehberTurcEntity
 		public List<CafeComment> CafeComments { get; set; }
 		public List<CarComment> CarComments { get; set; }
 		public List<KulturComment> KulturComments { get; set; }
+		public List<EventComment> EventComments { get; set; }
 		public List<OtelComment> OtelComments { get; set; }
 		public List<CityComment> CityComments { get; set; }
 		public List<OtelFavorite> OtelFavorites { get; set; }

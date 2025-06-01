@@ -15,7 +15,6 @@ namespace RehberTurcWebUI.ViewComponents.CityDetail
 		public IViewComponentResult Invoke()
 		{
 			return View(_citypageService.GetAll());
-
 		}
 	}
 }

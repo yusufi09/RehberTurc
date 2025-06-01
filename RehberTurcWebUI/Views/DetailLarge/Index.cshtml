@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Otel
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutDetailLarge.cshtml";
 }
@@ -102,7 +103,7 @@
 	================================================== -->
 <section class="listing-detail">
 
-                       @await Component.InvokeAsync("_DetailLargeBigGalleryComponentPartial")
+	@await Component.InvokeAsync("_DetailLargeBigGalleryComponentPartial",Model.Id)
 
 	<div class="listing-detail__scroll-menu-box scroller-menu">
 		<div class="container">
@@ -126,7 +127,7 @@
 				<div class="col-lg-8">
 					<div class="listing-detail__content-box">
 
-						@await Component.InvokeAsync("_DetailLargeOverviewComponentPartial")
+						@await Component.InvokeAsync("_DetailLargeOverviewComponentPartial",Model.Id)
 
 						<!-- gallery-box -->
 						@await Component.InvokeAsync("_DetailLargeGalleryBoxComponentPartial")

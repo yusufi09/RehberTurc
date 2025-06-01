@@ -9,12 +9,13 @@ namespace RehberTurcWebUI.Controllers
 
 		private readonly ICityPageService _cityPageService;
 		private readonly IUserService _userService;
-		
+		private readonly ICalanderService _calanderService;
 
-		public CityDetailController(IUserService userService, ICityPageService cityPageService)
+		public CityDetailController(IUserService userService, ICityPageService cityPageService, ICalanderService calanderService)
 		{
 			_userService = userService;
 			_cityPageService = cityPageService;
+			_calanderService = calanderService;
 		}
 		public IActionResult Index(int id)
 		{

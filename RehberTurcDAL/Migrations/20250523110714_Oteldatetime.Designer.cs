@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RehberTurcDAL.Data;
 
@@ -11,9 +12,11 @@ using RehberTurcDAL.Data;
 namespace RehberTurcDAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250523110714_Oteldatetime")]
+    partial class Oteldatetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -334,50 +337,6 @@ namespace RehberTurcDAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CafeFavorites");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.Calendar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Tittle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("calendars");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.CarFavorite", b =>
@@ -1077,86 +1036,6 @@ namespace RehberTurcDAL.Migrations
                     b.ToTable("RoomType");
                 });
 
-            modelBuilder.Entity("RehberTurcEntity.Event", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.EventComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventsId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("EventComments");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.EventImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventsId");
-
-                    b.ToTable("EventImages");
-                });
-
             modelBuilder.Entity("RehberTurcEntity.KulturFavorite", b =>
                 {
                     b.Property<int>("Id")
@@ -1372,17 +1251,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("Cafe");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.Calendar", b =>
-                {
-                    b.HasOne("RehberTurcEntity.Class.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.CarFavorite", b =>
@@ -1718,54 +1586,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("RoomType");
                 });
 
-            modelBuilder.Entity("RehberTurcEntity.Event", b =>
-                {
-                    b.HasOne("RehberTurcEntity.Class.Category", "Category")
-                        .WithMany("events")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RehberTurcEntity.Class.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("City");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.EventComment", b =>
-                {
-                    b.HasOne("RehberTurcEntity.Event", "Events")
-                        .WithMany("EventComments")
-                        .HasForeignKey("EventsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RehberTurcEntity.ApplicationUser", "User")
-                        .WithMany("EventComments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Events");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.EventImage", b =>
-                {
-                    b.HasOne("RehberTurcEntity.Event", "Events")
-                        .WithMany("Images")
-                        .HasForeignKey("EventsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Events");
-                });
-
             modelBuilder.Entity("RehberTurcEntity.KulturFavorite", b =>
                 {
                     b.HasOne("RehberTurcEntity.Class.Kultur", "Kultur")
@@ -1829,8 +1649,6 @@ namespace RehberTurcDAL.Migrations
 
                     b.Navigation("CityFavorites");
 
-                    b.Navigation("EventComments");
-
                     b.Navigation("KulturComments");
 
                     b.Navigation("KulturFavorites");
@@ -1874,8 +1692,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("Kulturs");
 
                     b.Navigation("Otels");
-
-                    b.Navigation("events");
                 });
 
             modelBuilder.Entity("RehberTurcEntity.Class.City", b =>
@@ -1906,13 +1722,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("OtelFavorites");
 
                     b.Navigation("Rooms");
-                });
-
-            modelBuilder.Entity("RehberTurcEntity.Event", b =>
-                {
-                    b.Navigation("EventComments");
-
-                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

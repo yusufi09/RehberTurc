@@ -23,6 +23,7 @@ namespace RehberTurcDAL.DTOs.OtelDTO
 		[Display(Name = "Şehir")]
 		public int CityId { get; set; }
 
+		public DateTime CreatedDate { get; set; }
 		public int CategoryId { get; set; }
 		public bool IsFavorite { get; set; }
 		public List<OtelComment> comments { get; set; }

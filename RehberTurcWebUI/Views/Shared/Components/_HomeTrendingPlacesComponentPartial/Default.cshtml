@@ -1,4 +1,5 @@
-﻿<!-- trending-places-block
+﻿@model List<Otel>
+<!-- trending-places-block
 			================================================== -->
 <section class="trending-places">
 	<div class="container">
@@ -17,15 +18,15 @@
 
 		<div class="trending-places__box owl-wrapper">
 			<div class="owl-carousel" data-num="5">
-
+				@foreach(var item in Model){
 				<div class="item">
 
 					<!-- place-post module -->
 					<div class="place-post">
 						<div class="place-post__gal-box">
-							<img class="place-post__image" src="~/html/images/h1.jpg" alt="place-image">
+							<img class="place-post__image" src="~/html/images/@item.Images[0].Url" alt="place-image">
 							<span class="place-post__rating">9.9</span>
-							<a class="place-post__like" href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<a class="place-post__like" href="/DetailLarge/Index?id=@item.Id"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 						</div>
 						<div class="place-post__content">
 							<p class="place-post__info">
@@ -33,10 +34,10 @@
 								<span class="open">Open</span> until 8:00 PM
 							</p>
 							<h2 class="place-post__title">
-								<a href="/DetailLarge/Index">Yusuf Hotel</a>
+									<a href="/DetailLarge/Index?id=@item.Id">@item.Name</a>
 							</h2>
 							<p class="place-post__description">
-								Restaurant
+								@item.Category
 								<span>
 									<i class="fa fa-usd red-col" aria-hidden="true"></i>
 									<i class="fa fa-usd red-col" aria-hidden="true"></i>
@@ -45,19 +46,19 @@
 								</span>
 								<span class="place-post__description-review">
 									<i class="fa fa-comment-o" aria-hidden="true"></i>
-									54 Reviews
+									@item.City
 								</span>
 							</p>
 							<p class="place-post__address">
 								<i class="fa fa-map-marker" aria-hidden="true"></i>
-								Gelincik çıkmazı sokak/Gültepe
+								@item.Location
 							</p>
 						</div>
 					</div>
 					<!-- end place-post module -->
 
 				</div>
-
+				}
 			</div>
 		</div>
 		<div class="center-button">

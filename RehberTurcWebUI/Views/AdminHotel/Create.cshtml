@@ -1,0 +1,90 @@
+﻿@using RehberTurcDAL.DTOs.OtelDTO
+@model OtelCreateDTO
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <div class="col-md-12 col-lg-10">
+            <div class="card border-0 bg-transparent">
+                <div class="card-header bg-transparent border-0">
+                    <h4 class="card-title">Yeni Şehir Ekle</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Hata/Success Mesajları -->
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+
+                        <table class="table table-borderless align-middle float-end">
+                            <tr>
+                                <td width="30%"><label asp-for="Name" class="form-label"></label></td>
+                                <td>
+                                    <input asp-for="Name" class="form-control" required>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label asp-for="CreatedDate" class="form-label"></label></td>
+                                <td>
+                                    <input asp-for="CreatedDate" class="form-control" type="date" required>
+                                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label asp-for="Description" class="form-label">Bilgi</label></td>
+                                <td>
+                                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <label>Resim</label>
+                                    <input type="file" class="form-control" name="files" multiple>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td width="30%"><label asp-for="CityId" class="form-label"></label></td>
+                                <td>
+                                    <input asp-for="CityId" class="form-control" required>
+                                    <span asp-validation-for="CityId" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="30%"><label asp-for="CategoryId" class="form-label"></label></td>
+                                <td>
+                                    <input asp-for="CategoryId" class="form-control" required>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            @*                             <tr>
+                                <td style="vertical-align: middle;"><label asp-for="Status" class="form-label"></label></td>
+                                <td>
+                                    <select asp-for="Status" class="form-select">
+                                        <option value="active">Active</option>
+                                        <option value="passive">Passive</option>
+                                        <option value="draft">Draft</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </td>
+                            </tr> *@
+                            <tr>
+                                <td></td>
+                                <td class="text-end">
+                                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                                    <a asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -52,7 +52,7 @@ namespace RehberTurcDAL.Data
 				.WithMany(c => c.KulturComments)
 				.HasForeignKey(dc => dc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
-
+		
 			modelBuilder.Entity<OtelComment>()
 				.HasOne(fc => fc.User)
 				.WithMany(c => c.OtelComments)
@@ -90,6 +90,12 @@ namespace RehberTurcDAL.Data
 				.HasOne(cf => cf.User)
 				.WithMany(u => u.AirbnbFavorites)
 				.HasForeignKey(cf => cf.UserId);
+			modelBuilder.Entity<EventComment>()
+				.HasOne(cc => cc.User)
+				.WithMany(c => c.EventComments)
+				.HasForeignKey(cc => cc.UserId)
+				.OnDelete(DeleteBehavior.Restrict);
+
 		}
 
 		public DbSet<ApplicationUser> ApplicationUsers { get; set; }
@@ -119,5 +125,9 @@ namespace RehberTurcDAL.Data
 		public DbSet<AirbnbFavorite> AirbnbFavorites { get; set; }
 		public DbSet<CityFavorite> CityFavorites { get; set; }
 		public DbSet<Mail> Mails { get; set; }
+		public DbSet<Event> Events { get; set; }
+		public DbSet<EventComment> EventComments { get; set; }
+		public DbSet<EventImage> EventImages { get; set; }
+		public DbSet<Calendar> calendars { get; set; }
 	}
 }

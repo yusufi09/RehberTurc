@@ -17,6 +17,7 @@ namespace RehberTurcEntity.Class
 		public List<Airbnb> Airbnbs { get; set; }
 		public List<Cafe> Cafes { get; set; }
 		public List<Car> Cars { get; set; }
+		public List<Event> events { get; set; }
 	}
 }
 

@@ -76,6 +76,9 @@ namespace RehberTurcWebUI
 			builder.Services.AddScoped<ICategoryService, CategoryManager>();
 			builder.Services.AddScoped<ICategoryDal, EfCoreCategoryDal>();
 
+			builder.Services.AddScoped<ICalanderService, CalanderManager>();
+			builder.Services.AddScoped<ICalanderDal, EfCoreCalanderDal>();
+
 			builder.Services.AddScoped<IMailService, MailManager>();
 			builder.Services.AddScoped<IMailDal, EfCoreMailDal>();
 

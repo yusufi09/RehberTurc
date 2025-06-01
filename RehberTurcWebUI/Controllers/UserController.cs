@@ -48,6 +48,8 @@ namespace RehberTurcWebUI.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Register(RegisterViewModel model)
 		{
+			ModelState.Remove("City");
+			ModelState.Remove("CityId");
 			if (!ModelState.IsValid)
 			{
 				return View(model);
@@ -60,8 +62,6 @@ namespace RehberTurcWebUI.Controllers
 					LastName = model.LastName,
 					Email = model.Email,
 					Address = model.Adress,
-					City = model.City,
-					CityId = model.CityId,
 					UserName = model.FirstName.ToLower().Replace(" ", "") + model.LastName.ToLower()
 				};
 

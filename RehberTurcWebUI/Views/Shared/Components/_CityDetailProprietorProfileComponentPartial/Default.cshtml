@@ -1,4 +1,6 @@
-﻿﻿@*Profil Sınıfları Bilgileri *@ 
+﻿@using RehberTurcEntity
+@model List<Calendar> 
+﻿Profil Sınıfları Bilgileri 
 <div class="col-lg-4">
     <div class="sidebar">
         <div class="takvim-wrapper">
@@ -18,85 +20,85 @@
 
         <style>
             .takvim-wrapper {
-                max-width: 400px;
-                background: white;
-                border-radius: 12px;
-                padding: 15px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-                font-family: sans-serif;
+            max-width: 400px;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            font-family: sans-serif;
             }
 
             .takvim-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
             }
 
-                .takvim-header h2 {
-                    margin: 0;
-                    font-size: 20px;
-                }
+            .takvim-header h2 {
+            margin: 0;
+            font-size: 20px;
+            }
 
-                .takvim-header button {
-                    background: #eee;
-                    border: none;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
+            .takvim-header button {
+            background: #eee;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            }
 
             .hafta-gunleri {
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                text-align: center;
-                font-weight: bold;
-                color: #777;
-                margin-bottom: 5px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            color: #777;
+            margin-bottom: 5px;
             }
 
             .takvim-gunler {
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                gap: 5px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
             }
 
             .gun {
-                padding: 10px;
-                text-align: center;
-                border-radius: 6px;
-                cursor: pointer;
-                background: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #f2f2f2;
             }
 
-                .gun:hover {
-                    background: #ddd;
-                }
+            .gun:hover {
+            background: #ddd;
+            }
 
             .secili {
-                background: black;
-                color: white;
+            background: black;
+            color: white;
             }
 
             .event-card {
-                background: white;
-                border-radius: 10px;
-                padding: 10px;
-                margin-top: 10px;
-                display: flex;
-                gap: 10px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
-                .event-card img {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 8px;
-                    object-fit: cover;
-                }
+            .event-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            }
 
             .event-info {
-                font-size: 14px;
+            font-size: 14px;
             }
         </style>
 
@@ -104,10 +106,15 @@
             const ayIsimleri = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
             let seciliTarih = new Date();
 
+            fetch(){
+            Url:"/Home/",
+            Method:"post"
+            }.then(data)
+         
             const etkinlikVerisi = {
               "2025-05-18": [
                 {
-                  baslik: "Tarkan Konseri",
+                baslik: "Tarkan Konseri",
                   saat: "20:00",
                   yer: "Harbiye Açıkhava",
                   gorsel: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tarkan_in_2019.jpg/1200px-Tarkan_in_2019.jpg"
@@ -115,14 +122,14 @@
               ],
               "2025-05-19": [
                 {
-                  baslik: "BKM Mutfak",
+                baslik: "BKM Mutfak",
                   saat: "21:00",
                   yer: "Beşiktaş",
                   gorsel: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Stand-up_Comedy_Show.jpg"
                 }
               ]
             };
-
+          
             function takvimiOlustur() {
               const gunlerEl = document.getElementById("gunler");
               const ayBaslik = document.getElementById("ayIsim");
@@ -227,55 +234,6 @@
             </ul>
         </div>
 
-        <div class="sidebar__widget sidebar__widget-author">
-            <h2 class="sidebar__widget-title">
-                Author
-            </h2>
-
-            <!-- Author-wrapper module -->
-            <div class="author-wrapper">
-                <div class="author-wrapper__profile">
-                    <div class="row">
-                        <div class="col-7">
-                            <div class="author-wrapper__content">
-                                <a class="author-wrapper__image" href="#"><img src="~/html/upload/avatar1.jpg" alt=""></a>
-                                <h3 class="author-wrapper__title">
-                                    <a href="#">Matt Smith</a>
-                                    <span class="author-wrapper__location">
-                                        New York
-                                    </span>
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="col-5">
-                            <a class="author-wrapper__btn follow-btn" href="#">
-                                <i class="la la-eye"></i>
-                                Follow
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <ul class="author-wrapper__list">
-                    <li>
-                        <span>42</span>
-                        List
-                    </li>
-                    <li>
-                        <span>12</span>
-                        Followers
-                    </li>
-                    <li>
-                        <span>34</span>
-                        Following
-                    </li>
-                    <li>
-                        <span>56</span>
-                        Reviews
-                    </li>
-                </ul>
-            </div>
-            <!-- End Author-wrapper module-->
-        </div>
 
         <div class="sidebar__widget sidebar__widget-tags">
             <h2 class="sidebar__widget-title">
