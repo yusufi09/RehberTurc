@@ -1,6 +1,92 @@
 ﻿@using RehberTurcEntity
-@model List<Calendar> 
-﻿Profil Sınıfları Bilgileri 
+@model List<Calendar>
+﻿Profil Sınıfları Bilgileri
+
+<style>
+    .takvim-wrapper {
+        max-width: 400px;
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        font-family: sans-serif;
+    }
+
+    .takvim-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+        .takvim-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .takvim-header button {
+            background: #eee;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .hafta-gunleri {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        font-weight: bold;
+        color: #777;
+        margin-bottom: 5px;
+    }
+
+    .takvim-gunler {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+
+    .gun {
+        padding: 10px;
+        text-align: center;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #f2f2f2;
+    }
+
+        .gun:hover {
+            background: #ddd;
+        }
+
+    .secili {
+        background: black;
+        color: white;
+    }
+
+    .event-card {
+        background: white;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+        .event-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+    .event-info {
+        font-size: 14px;
+    }
+</style>
+
+
 <div class="col-lg-4">
     <div class="sidebar">
         <div class="takvim-wrapper">
@@ -18,190 +104,12 @@
             <div id="etkinlikler"></div>
         </div>
 
-        <style>
-            .takvim-wrapper {
-            max-width: 400px;
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            font-family: sans-serif;
-            }
-
-            .takvim-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            }
-
-            .takvim-header h2 {
-            margin: 0;
-            font-size: 20px;
-            }
-
-            .takvim-header button {
-            background: #eee;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            }
-
-            .hafta-gunleri {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-weight: bold;
-            color: #777;
-            margin-bottom: 5px;
-            }
-
-            .takvim-gunler {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            }
-
-            .gun {
-            padding: 10px;
-            text-align: center;
-            border-radius: 6px;
-            cursor: pointer;
-            background: #f2f2f2;
-            }
-
-            .gun:hover {
-            background: #ddd;
-            }
-
-            .secili {
-            background: black;
-            color: white;
-            }
-
-            .event-card {
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            }
-
-            .event-card img {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: cover;
-            }
-
-            .event-info {
-            font-size: 14px;
-            }
-        </style>
-
-        <script>
-            const ayIsimleri = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
-            let seciliTarih = new Date();
-
-            fetch(){
-            Url:"/Home/",
-            Method:"post"
-            }.then(data)
-         
-            const etkinlikVerisi = {
-              "2025-05-18": [
-                {
-                baslik: "Tarkan Konseri",
-                  saat: "20:00",
-                  yer: "Harbiye Açıkhava",
-                  gorsel: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tarkan_in_2019.jpg/1200px-Tarkan_in_2019.jpg"
-                }
-              ],
-              "2025-05-19": [
-                {
-                baslik: "BKM Mutfak",
-                  saat: "21:00",
-                  yer: "Beşiktaş",
-                  gorsel: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Stand-up_Comedy_Show.jpg"
-                }
-              ]
-            };
-          
-            function takvimiOlustur() {
-              const gunlerEl = document.getElementById("gunler");
-              const ayBaslik = document.getElementById("ayIsim");
-
-              const y = seciliTarih.getFullYear();
-              const m = seciliTarih.getMonth();
-              const ilkGun = new Date(y, m, 1);
-              const sonGun = new Date(y, m + 1, 0);
-              const baslangicIndex = (ilkGun.getDay() + 6) % 7;
-
-              ayBaslik.innerText = `${ayIsimleri[m]} ${y}`;
-              gunlerEl.innerHTML = "";
-
-              for (let i = 0; i < baslangicIndex; i++) {
-                gunlerEl.innerHTML += `<div></div>`;
-              }
-
-              for (let gun = 1; gun <= sonGun.getDate(); gun++) {
-                const tarihStr = `${y}-${(m+1).toString().padStart(2, '0')}-${gun.toString().padStart(2, '0')}`;
-                const gunEl = document.createElement("div");
-                gunEl.className = "gun";
-                gunEl.textContent = gun;
-
-                gunEl.addEventListener("click", () => {
-                  document.querySelectorAll(".gun").forEach(g => g.classList.remove("secili"));
-                  gunEl.classList.add("secili");
-                  etkinlikleriGoster(tarihStr);
-                });
-
-                gunlerEl.appendChild(gunEl);
-              }
-            }
-
-            function etkinlikleriGoster(tarih) {
-              const etkinlikAlan = document.getElementById("etkinlikler");
-              etkinlikAlan.innerHTML = "";
-
-              const liste = etkinlikVerisi[tarih];
-              if (!liste) {
-                etkinlikAlan.innerHTML = "<p>Bu gün için etkinlik yok.</p>";
-                return;
-              }
-
-              liste.forEach(e => {
-                etkinlikAlan.innerHTML += `
-                  <div class="event-card">
-                    <img src="${e.gorsel}" alt="${e.baslik}" />
-                    <div class="event-info">
-                      <strong>${e.baslik}</strong><br />
-                      ${e.saat} – ${e.yer}
-                    </div>
-                  </div>
-                `;
-              });
-            }
-
-            function oncekiAy() {
-              seciliTarih.setMonth(seciliTarih.getMonth() - 1);
-              takvimiOlustur();
-            }
-
-            function sonrakiAy() {
-              seciliTarih.setMonth(seciliTarih.getMonth() + 1);
-              takvimiOlustur();
-            }
-
-            // Başlangıç
-            takvimiOlustur();
-        </script>
 
 
-       
+
+
+
+
         <div class="sidebar__widget sidebar__widget-listing-details">
             <h2 class="sidebar__widget-title">
                 Details
@@ -261,3 +169,95 @@
     </div>
 </div>
 
+<script>
+    const ayIsimleri = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+    let seciliTarih = new Date();
+
+    function takvimiOlustur() {
+      const gunlerEl = document.getElementById("gunler");
+      const ayBaslik = document.getElementById("ayIsim");
+
+      const y = seciliTarih.getFullYear();
+      const m = seciliTarih.getMonth();
+      const ilkGun = new Date(y, m, 1);
+      const sonGun = new Date(y, m + 1, 0);
+      const baslangicIndex = (ilkGun.getDay() + 6) % 7;
+
+      ayBaslik.innerText = `${ayIsimleri[m]} ${y}`;
+      gunlerEl.innerHTML = "";
+
+      for (let i = 0; i < baslangicIndex; i++) {
+        gunlerEl.innerHTML += `<div></div>`;
+      }
+
+      for (let gun = 1; gun <= sonGun.getDate(); gun++) {
+        const tarihStr = `${y}-${(m+1).toString().padStart(2, '0')}-${gun.toString().padStart(2, '0')}`;
+        const gunEl = document.createElement("div");
+        gunEl.className = "gun";
+        gunEl.textContent = gun;
+
+        gunEl.addEventListener("click", () => {
+          document.querySelectorAll(".gun").forEach(g => g.classList.remove("secili"));
+          gunEl.classList.add("secili");
+          etkinlikleriGoster(tarihStr);
+        });
+
+        gunlerEl.appendChild(gunEl);
+      }
+    }
+
+    function etkinlikleriGoster(tarih) {
+      const etkinlikAlan = document.getElementById("etkinlikler");
+      etkinlikAlan.innerHTML = "<p>Etkinlikler yükleniyor...</p>";
+
+      // Fetch events for the selected date from the API
+      fetch(`/api/Events/GetEventsByDate?date=${tarih}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          etkinlikAlan.innerHTML = "";
+
+          if (!data || data.length === 0) {
+            etkinlikAlan.innerHTML = "<p>Bu gün için etkinlik yok.</p>";
+            return;
+          }
+
+          data.forEach(e => {
+            let imageUrl = e.images && e.images.length > 0
+              ? `~/html/images/${e.images[0].url}`
+              : "~/html/images/default-event.jpg";
+
+            etkinlikAlan.innerHTML += `
+              <div class="event-card">
+                <img src="${imageUrl}" alt="${e.title}" />
+                <div class="event-info">
+                  <strong>${e.title}</strong><br />
+                  ${e.time || '00:00'} – ${e.venue || 'Belirtilmemiş'}
+                </div>
+              </div>
+            `;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching events:', error);
+          etkinlikAlan.innerHTML = "<p>Etkinlikler yüklenirken bir hata oluştu.</p>";
+        });
+    }
+
+    function oncekiAy() {
+      seciliTarih.setMonth(seciliTarih.getMonth() - 1);
+      takvimiOlustur();
+    }
+
+    function sonrakiAy() {
+      seciliTarih.setMonth(seciliTarih.getMonth() + 1);
+      takvimiOlustur();
+    }
+
+    // Başlangıç
+    takvimiOlustur();
+</script>

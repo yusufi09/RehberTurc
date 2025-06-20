@@ -84,6 +84,10 @@ namespace RehberTurcWebUI
 
 			builder.Services.AddScoped<IOtelService, OtelManager>();
 			builder.Services.AddScoped<IOtelDal, EfCoreOtelDal>();
+
+
+			builder.Services.AddScoped<IListingService, ListingManager>();
+			builder.Services.AddScoped<IListingDal, EfCoreListingDal>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			
 			var app = builder.Build();

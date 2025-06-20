@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RehberTurcDAL.Data;
 
@@ -11,9 +12,11 @@ using RehberTurcDAL.Data;
 namespace RehberTurcDAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250615202703_Datetime")]
+    partial class Datetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1208,17 +1211,11 @@ namespace RehberTurcDAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CityId")
                         .HasColumnType("int");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -1245,8 +1242,6 @@ namespace RehberTurcDAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("CityId");
 
@@ -1869,12 +1864,6 @@ namespace RehberTurcDAL.Migrations
 
             modelBuilder.Entity("RehberTurcEntity.Listing", b =>
                 {
-                    b.HasOne("RehberTurcEntity.Class.Category", "category")
-                        .WithMany("Listings")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("RehberTurcEntity.Class.City", "city")
                         .WithMany("Listings")
                         .HasForeignKey("CityId")
@@ -1886,8 +1875,6 @@ namespace RehberTurcDAL.Migrations
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("category");
 
                     b.Navigation("city");
 
@@ -1994,8 +1981,6 @@ namespace RehberTurcDAL.Migrations
                     b.Navigation("Cars");
 
                     b.Navigation("Kulturs");
-
-                    b.Navigation("Listings");
 
                     b.Navigation("Otels");
 

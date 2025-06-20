@@ -11,6 +11,7 @@ namespace RehberTurcEntity
 	{
 		public List<EventImage> Images { get; set; }
 		public string Description { get; set; }
+		public DateTime EventDate {get; set; }
 		public List<EventComment> EventComments { get; set; }
 		public int CategoryId { get; set; }
 		public Category Category { get; set; }

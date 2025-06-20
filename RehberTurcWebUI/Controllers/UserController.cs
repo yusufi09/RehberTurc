@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RehberTurcBLL.Abstract;
 using RehberTurcEntity;
 using RehberTurcWebUI.Models;
 using RehberTurcWebUI.Services;
@@ -10,18 +11,19 @@ namespace RehberTurcWebUI.Controllers
 	{
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
-
-		public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+		private readonly ICityPageService _cityPageService;
+		public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ICityPageService cityPageService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
+			_cityPageService = cityPageService;
 		}
 
 
 		public IActionResult SignIn(string returnUrl = null)
 		{
-
 			return View(new LoginViewModel() { ReturnUrl = returnUrl == null ? "/Home/Index" : returnUrl });
+
 		}
 
 		[HttpPost]
@@ -40,6 +42,7 @@ namespace RehberTurcWebUI.Controllers
 
 		public IActionResult Register()
 		{
+			ViewBag.cities = _cityPageService.GetAll();
 			return View(new RegisterViewModel());
 		}
 
@@ -49,7 +52,6 @@ namespace RehberTurcWebUI.Controllers
 		public async Task<IActionResult> Register(RegisterViewModel model)
 		{
 			ModelState.Remove("City");
-			ModelState.Remove("CityId");
 			if (!ModelState.IsValid)
 			{
 				return View(model);

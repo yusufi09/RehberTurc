@@ -95,9 +95,16 @@ namespace RehberTurcDAL.Data
 				.WithMany(c => c.EventComments)
 				.HasForeignKey(cc => cc.UserId)
 				.OnDelete(DeleteBehavior.Restrict);
-
+			modelBuilder.Entity<Listing>()
+	           .HasOne(l => l.country)
+	           .WithMany(c => c.Listings)
+	           .HasForeignKey(l => l.CountryId)
+	           .OnDelete(DeleteBehavior.Restrict); // veya DeleteBehavior.NoAction
+	           
 		}
 
+		public DbSet<Listing> listings { get; set; }
+		public DbSet<ListingImage> Images { get; set; }
 		public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 		public DbSet<Country>  Countries { get; set; }
 		public DbSet<City> Cities { get; set; }

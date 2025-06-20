@@ -14,6 +14,7 @@ namespace RehberTurcEntity.Class
 		public string Image { get; set; }
 		public string Byrk { get; set; }
 		public List<City> Cities{ get; set; }
+		public List<Listing>Listings { get; set; }
 
 	}
 }

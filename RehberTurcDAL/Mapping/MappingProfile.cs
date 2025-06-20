@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using RehberTurcDAL.DTOs.AddListing;
 using RehberTurcDAL.DTOs.CityDTO;
 using RehberTurcDAL.DTOs.OtelDTO;
+using RehberTurcEntity;
 using RehberTurcEntity.Class;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,9 @@ namespace RehberTurcDAL.Mapping
 			CreateMap<CityCreateDTO, City>().ReverseMap();
 
 			CreateMap<OtelCreateDTO, Otel>().ReverseMap();
+		   //UpdateMap<OtelUpdateDTO, Otel>().ReverseMap();
+
+			CreateMap<ListingCreateDTO, Listing>().ReverseMap();
 		}
 	}
 }

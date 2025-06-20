@@ -3,95 +3,94 @@
 
 <!-- reviews list -->
 <ul class="reviews-list">
-	@* @foreach (var item in Model)
+    @* @foreach (var item in Model)
 	{ *@
-		<li class="reviews-list__item">
-			<div class="reviews-list__item-box">
-				<img class="reviews-list__item-image" src="~/html/upload/avatar-p" alt="">
-				<div class="reviews-list__item-content">
-					<h3 class="reviews-list__item-title">
-						@* @item *@.FirstName
-					</h3>
-					<span class="reviews-list__item-location">
-						@* @item.Address@item *@.City
-					</span>
-					<p class="reviews-list__item-date">
-						Posted October 7, 2018
-						<span class="reviews-list__item-rating">8.0</span>
-					</p>
-					<h3 class="reviews-list__item-title">
-						Good Service but..
-					</h3>
-					<p class="reviews-list__item-description">
-						@* @item *@.CityComments
-					</p>
-					<a class="reviews-list__item-helpful" href="#">
-						<i class="la la-thumbs-o-up"></i>
-						Helpfull review
-						<span>8</span>
-					</a>
-					<a class="reviews-list__item-reply" href="#">
-						<i class="la la-mail-forward"></i>
-						Reply
-					</a>
-				</div>
-			</div>
-		</li>
-	@* } *@
+    <li class="reviews-list__item">
+        <div class="reviews-list__item-box">
+            <img class="reviews-list__item-image" src="~/html/upload/avatar-p" alt="">
+            <div class="reviews-list__item-content">
+                <h3 class="reviews-list__item-title">
+                    @* @item *@.FirstName
+                </h3>
+                <span class="reviews-list__item-location">
+                    @* @item.Address@item *@.City
+                </span>
+                <p class="reviews-list__item-date">
+                    Posted October 7, 2018
+                    <span class="reviews-list__item-rating">8.0</span>
+                </p>
+                <h3 class="reviews-list__item-title">
+                    Good Service but..
+                </h3>
+                <p class="reviews-list__item-description">
+                    @* @item *@.CityComments
+                </p>
+                <a class="reviews-list__item-helpful" href="#">
+                    <i class="la la-thumbs-o-up"></i>
+                    Helpfull review
+                    <span>8</span>
+                </a>
+                <a class="reviews-list__item-reply" href="#">
+                    <i class="la la-mail-forward"></i>
+                    Reply
+                </a>
+            </div>
+        </div>
+    </li>
+    @* } *@
 
 </ul>
 <!-- reviews-list -->
 <!-- Contact form module -->
 <form class="contact-form" id="leave-review">
-	<h2 class="contact-form__title">
-		Rate us and Write a Review
-	</h2>
-	<div class="row">
-		<div class="col-md-6">
-			<p class="contact-form__rate">
-				Your rating for this listing:
-			</p>
-			<p class="contact-form__rate-bx">
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-				<i class="la la-star"></i>
-			</p>
-			<p class="contact-form__rate-bx-show">
-				<span class="rate-actual">0</span> / 10
-			</p>
-		</div>
-		<div class="col-md-6">
-			<div class="contact-form__upload-btn">
-				<input class="contact-form__input-file" type="file" name="photo-upload" id="photo-upload" />
-				<span>
-					<i class="la la-cloud-upload"></i>
-					Upload Photos
-				</span>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<input class="contact-form__input-text" type="text" name="name" id="name" placeholder="Name:" />
-		</div>
-		<div class="col-md-6">
-			<input class="contact-form__input-text" type="text" name="mail" id="mail" placeholder="Email:" />
-		</div>
-	</div>
-	<textarea class="contact-form__textarea" name="comment" id="comment" placeholder="Comment"></textarea>
-	<input class="contact-form__submit" type="submit" name="submit-contact" id="submit_contact" value="Submit Review" />
+    <h2 class="contact-form__title">
+        Rate us and Write a Review
+    </h2>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="contact-form__rate">
+                Your rating for this listing:
+            </p>
+            <p class="contact-form__rate-bx">
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+                <i class="la la-star"></i>
+            </p>
+            <p class="contact-form__rate-bx-show">
+                <span class="rate-actual">0</span> / 10
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="contact-form__upload-btn">
+                <input class="contact-form__input-file" type="file" name="photo-upload" id="photo-upload" />
+                <span>
+                    <i class="la la-cloud-upload"></i>
+                    Upload Photos
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <input class="contact-form__input-text" type="text" name="name" id="name" placeholder="Name:" />
+        </div>
+        <div class="col-md-6">
+            <input class="contact-form__input-text" type="text" name="mail" id="mail" placeholder="Email:" />
+        </div>
+    </div>
+    <textarea class="contact-form__textarea" name="comment" id="comment" placeholder="Comment"></textarea>
+    <input class="contact-form__submit" type="submit" name="submit-contact" id="submit_contact" value="Submit Review" />
 </form>
 <!-- End Contact form module -->
-						</div>
-
-					</div>
-
-				</div>
-			</div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>

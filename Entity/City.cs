@@ -19,6 +19,7 @@ namespace RehberTurcEntity.Class
 		public List<CityComment> cityComments { get; set; }
 		public List<Calendar> Calendars { get; set; }
 		public List<Event> Events { get; set; }
+		public List<Listing> Listings { get; set; }
 		public DateTime CreatedDate { get; set; }
 	}
 }
