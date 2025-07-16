@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RehberTurcBLL.Abstract;
+using RehberTurcEntity;
+using RehberTurcEntity.Class;
 
 
 namespace RehberTurcWebUI.ViewComponents.CityDetail
@@ -14,9 +16,12 @@ namespace RehberTurcWebUI.ViewComponents.CityDetail
 			_userService = userService;
 			_citypageService = citypageService;
 		}
-		public IViewComponentResult Invoke()
+		public IViewComponentResult Invoke(int userId)
 		{
-			return View(_citypageService.GetAll());
+			var user = _userService.GetAll().FirstOrDefault(x => x.Id == userId.ToString());
+			if (user == null)
+				return View(new List<ApplicationUser>());
+			return View(new List<ApplicationUser> { user });
 		}
 	}
 }

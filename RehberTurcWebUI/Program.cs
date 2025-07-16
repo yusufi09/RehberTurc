@@ -88,6 +88,11 @@ namespace RehberTurcWebUI
 
 			builder.Services.AddScoped<IListingService, ListingManager>();
 			builder.Services.AddScoped<IListingDal, EfCoreListingDal>();
+
+
+			builder.Services.AddScoped<IEventService, EventManager>();
+			builder.Services.AddScoped<IEventDal, EfCoreEventDal>();
+
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			
 			var app = builder.Build();

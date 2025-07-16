@@ -1,19 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RehberTurcBLL.Abstract;
+using RehberTurcEntity;
+using RehberTurcEntity.Class;
 
 namespace RehberTurcWebUI.ViewComponents.CityDetail
 {
 	public class _CityDetailProprietorProfileComponentPartial : ViewComponent
 	{
-		private readonly ICalanderService _calanderService;
-		public _CityDetailProprietorProfileComponentPartial(ICalanderService calanderService)
+		
+		private readonly IEventService _eventService;
+		public _CityDetailProprietorProfileComponentPartial(IEventService eventService)
 		{
-			_calanderService = calanderService;
-
+			
+			_eventService = eventService;
 		}
-		public IViewComponentResult Invoke()
+
+		public IViewComponentResult Invoke(int cityId)
 		{
-			return View(_calanderService.GetAll());
+			// Sadece ilgili şehrin etkinliklerini getir
+			var events = _eventService.GetAll(x => x.CityId == cityId);
+			return View(events);
 		}
 	}
 }

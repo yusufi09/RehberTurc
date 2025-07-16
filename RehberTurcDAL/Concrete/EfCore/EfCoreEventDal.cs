@@ -20,13 +20,10 @@ namespace RehberTurcDAL.Concrete.EfCore
 		}
 		public override List<Event> GetAll(Expression<Func<Event, bool>> filter = null)
 		{
-			var entities = _context.Events.Include(i => i.Images).AsQueryable(); //.AsTracking():gönderilen istek takip edilmez.
-
+			var entities = _context.Events.Include(i => i.Images).AsQueryable(); //.AsTracking():gönderilen istek takip edilmez.<
 			if (filter != null)
-			{
-				entities = entities.Where(filter);
-			}
-			return entities.ToList();
+                return _context.Events.Where(filter).ToList();
+            return _context.Events.ToList();
 		}
 	}
 }

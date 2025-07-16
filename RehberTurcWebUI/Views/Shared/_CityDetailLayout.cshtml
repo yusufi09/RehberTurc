@@ -1,5 +1,4 @@
-﻿﻿
-<!doctype html>
+﻿<!doctype html>
 
 
 <html lang="en" class="no-js">
@@ -15,96 +14,84 @@
 	<link rel="stylesheet" type="text/css" href="~/html/css/style.css">
 
 </head>
- <body>
+<body>
+	<!-- Container -->
+	<div id="container">
+	<header class="clearfix">
 
-	@* <!-- Container -->
-	<div id="container"> *@
-		<!-- Header
-			================================================== -->
-		<header class="clearfix">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				@* 
+					<a class="navbar-brand" href="Home">
+						<img src="~/html/images/bg.jpg" alt="">
+					</a> *@
 
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-					<a class="navbar-brand" href="index.html">
-						<img src="~/html/images/logo.png" alt="">
-					</a>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li>
+							<a class="active" href="/">Home <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<ul class="dropdown">
+								<li><a href="/">Homepage </a></li>
+								<li><a href="CityDetail">İstanbul </a></li>
+								<li><a href="">Londra </a></li>
+								<li><a href="">NewYork </a></li>
+								<li><a href="">Paris </a></li>
 
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li>
-								<a class="active" href="/">Home <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-								<ul class="dropdown">
-									<li><a href="/">Homepage </a></li>
-									<li><a href="CityDetail">İstanbul </a></li>
-
-								</ul>
-							</li>
-							<li>
-								<a href="portfolio.html">Pages <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-								<div class="megadropdown">
-									<div class="dropdown-box">
-										<span>Explore pages</span>
-										<ul class="dropdown-list">
-											<li><a href="explore-sidebar-map.html">Explore map sidebar</a></li>
-											<li><a href="explore-fullwidth-map.html">Explore fullwidth map</a></li>
-											<li><a href="explore-category.html">Explore by Category</a></li>
-											<li><a href="explore-fullwidth-map-list.html">Explore list</a></li>
-										</ul>
-									</div>
-									<div class="dropdown-box">
-										<span>Listing detail pages</span>
-										<ul class="dropdown-list">
-											<li><a href="listing-detail-large.html">Listing detail large image</a></li>
-											<li><a href="listing-detail-sidebar.html">Listing detail with sidebar</a></li>
-											<li><a href="listing-detail-fullwidth.html">Listing detail fullwidth</a></li>
-										</ul>
-									</div>
-									<div class="dropdown-box">
-										<span>Simple pages</span>
-										<ul class="dropdown-list">
-											<li><a href="about.html">About Us</a></li>
-											<li><a href="blog.html">Blog</a></li>
-										</ul>
-									</div>
-									<div class="dropdown-box">
-										<span>Account pages</span>
-										<ul class="dropdown-list">
-											<a asp-controller="PropertyProfile" asp-action="Index">Property Girişi</a>
-											<a asp-controller="AddListing" asp-action="Index">Property Kayıt</a>
-
-											<a asp-controller="User" asp-action="SignIn">SignIn</a>
-											<a asp-controller="User" asp-action="SignIn">Register</a>
-										</ul>
-									</div>
+							</ul>
+						</li>
+						<li>
+							<a href="portfolio.html">Pages <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<div class="megadropdown">
+								<div class="dropdown-box">
+									<span>Explore pages</span>
+									<ul class="dropdown-list">
+										<li><a href="explore-sidebar-map.html">Explore map sidebar</a></li>
+										<li><a href="explore-fullwidth-map.html">Explore fullwidth map</a></li>
+										<li><a href="explore-category.html">Explore by Category</a></li>
+										<li><a href="explore-fullwidth-map-list.html">Explore list</a></li>
+									</ul>
 								</div>
-							</li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-						<ul class="navbar-nav ml-auto right-list">
-							<li>
-								<a asp-controller="User" asp-action="SignIn">
-									<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In
-								</a>
-							</li>
-							<li>
-								<a asp-controller="User" asp-action="SignIn">
-									<i class="fa fa-user-o" aria-hidden="true"></i> Register
-								</a>
-							</li>
-						</ul>
-
-						<a asp-controller="AddListing" asp-action="Index" class="add-list-btn btn-default">
-							<i class="fa fa-plus" aria-hidden="true"></i> Add Listing
-						</a>
-					</div>
+								<div class="dropdown-box">
+									<span>Listing detail pages</span>
+									<ul class="dropdown-list">
+										<li><a href="listing-detail-large.html">Listing detail large image</a></li>
+										<li><a href="listing-detail-sidebar.html">Listing detail with sidebar</a></li>
+										<li><a href="listing-detail-fullwidth.html">Listing detail fullwidth</a></li>
+									</ul>
+								</div>
+								<div class="dropdown-box">
+									<span>Simple pages</span>
+									<ul class="dropdown-list">
+										<li><a href="about.html">About Us</a></li>
+										<li><a href="blog.html">Blog</a></li>
+										<li><a href="single-post.html">Blog Single Post</a></li>
+									</ul>
+								</div>
+								<div class="dropdown-box">
+									<span>Account pages</span>
+									<ul class="dropdown-list">
+										<li><a href="add-listing.html">Add listing</a></li>
+										<li><a href="User/Index">Login &amp; Registration</a></li>
+										<li><a href="User/Index">User page</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+					<ul class="navbar-nav ml-auto right-list">
+						<li><a href="User/Index"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Sign In</a></li>
+						<li><a href="User/Index"><i class="fa fa-user-o" aria-hidden="true"></i> Register</a></li>
+					</ul>
+					<a href="add-listing.html" class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Listing</a>
 				</div>
-			</nav>
-		</header>
+			</div>
+		</nav>
+	</header>
 	<style>
 		.event-card {
 			background: white;
@@ -139,9 +126,29 @@
 		  renderEvents("2025-05-18");
 		});
 	</script>
-      
-		@RenderBody()
 
- </body>
+	@RenderBody()
+	</div> 
+	<script src="~/html/js/jquery.min.js"></script>
+	<script src="~/html/js/jquery.migrate.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI"></script>
+	<!--build:js js/triptip-plugins.min.js -->
+	<script src="~/html/js/jquery-ui.min.js"></script>
+	<script src="~/html/js/select2.min.js"></script>
+	<script src="~/html/js/jquery.imagesloaded.min.js"></script>
+	<script src="~/html/js/jquery.isotope.min.js"></script>
+	<script src="~/html/js/owl.carousel.min.js"></script>
+	<script src="~/html/js/jquery.waypoints.min.js"></script>
+	<script src="~/html/js/retina-1.1.0.min.js"></script>
+	<script src="~/html/js/jquery.appear.js"></script>
+	<script src="~/html/js/infobox.min.js"></script>
+	<script src="~/html/js/markerclusterer.js"></script>
+	<script src="~/html/js/maps.js"></script>
+	<!-- endbuild -->
+	<script src="~/html/js/popper.js"></script>
+	<script src="~/html/js/bootstrap.min.js"></script>
+	<script src="~/html/js/jquery.countTo.js"></script>
+	<script src="~/html/js/script.js"></script>
+
+</body>
 </html>
-		

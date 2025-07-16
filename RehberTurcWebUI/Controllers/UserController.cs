@@ -64,7 +64,8 @@ namespace RehberTurcWebUI.Controllers
 					LastName = model.LastName,
 					Email = model.Email,
 					Address = model.Adress,
-					UserName = model.FirstName.ToLower().Replace(" ", "") + model.LastName.ToLower()
+					UserName = model.FirstName.ToLower().Replace(" ", "") + model.LastName.ToLower(),
+					CityId = model.CityId
 				};
 
 				var result = await _userManager.CreateAsync(user, model.Password);

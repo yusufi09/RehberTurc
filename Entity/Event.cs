@@ -15,7 +15,8 @@ namespace RehberTurcEntity
 		public List<EventComment> EventComments { get; set; }
 		public int CategoryId { get; set; }
 		public Category Category { get; set; }
-
+		public int CityId { get; set; }
+		public City City { get; set; }
 		
 
 	}

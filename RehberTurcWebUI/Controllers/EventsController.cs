@@ -23,12 +23,16 @@ namespace RehberTurcWebUI.Controllers
 			if (string.IsNullOrEmpty(date))
 				return BadRequest("Geçerli bir tarih belirtilmelidir.");
 
-			if (!DateTime.TryParse(date, out DateTime parsedDate))
+
+			if (!DateTime.TryParseExact(date, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate)
+	&& !DateTime.TryParseExact(date, "yyyy-MM-ddTHH:mm:ss", null, System.Globalization.DateTimeStyles.None, out parsedDate))
+			{
 				return BadRequest("Geçersiz tarih formatı.");
+			}
 
 			var events = await _context.Events
 				.Include(e => e.Images)
-				.Where(e => e.EventDate == parsedDate.Date)
+				.Where(e => e.EventDate.Date == parsedDate.Date)
 				.ToListAsync();
 
 			// Transform to a simplified format for the client

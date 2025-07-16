@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RehberTurcBLL.Abstract;
+using RehberTurcEntity;
+using RehberTurcEntity.Class;
+using System.Drawing;
 namespace RehberTurcWebUI.ViewComponents.CityDetail
 {
 	public class _CityDetailScrollGalleryComponentPartial : ViewComponent
@@ -12,9 +15,12 @@ namespace RehberTurcWebUI.ViewComponents.CityDetail
 			_citypageService = citypageService;
 		}
 
-		public IViewComponentResult Invoke()
+		public IViewComponentResult Invoke(int cityId)
 		{
-			return View(_citypageService.GetAll());
+			var city = _citypageService.GetAll().FirstOrDefault(x => x.Id == cityId);
+			if (city == null)
+				return View(new List<City>());
+			return View(new List<City> { city });
 		}
 	}
 }

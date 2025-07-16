@@ -171,117 +171,96 @@
         <!-- İşletme Kayıt Formu -->
         <h1 class="text-center mb-4" style="color: var(--text-dark);">İŞLETME KAYIT FORMU</h1>
 
-        <form asp-action="Index" method="post" enctype="multipart/form-data">
-            <!-- Kategori Seçimi -->
-            <div class="form-section">
-                <h2 class="section-title">KATEGORİ SEÇİMİ</h2><div class="row g-4">
-                   
-                    <select class="form-control" asp-for="CategoryId">
-                        @foreach (Category item in (List<Category>)ViewBag.Categories)
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
+<form asp-action="Index" method="post" enctype="multipart/form-data">
+    <!-- Kategori Seçimi -->
+    <div class="form-section">
+        <h2 class="section-title">KATEGORİ SEÇİMİ</h2>
+        <select class="form-control" asp-for="CategoryId">
+            @foreach (Category item in (List<Category>)ViewBag.Categories)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
 
-                    </select>
-                </div>
-                    
-                <input type="hidden" id="businessCategory" name="businessCategory" required>
+    <!-- Genel Bilgiler -->
+    <div class="form-section">
+        <h2 class="section-title">GENEL BİLGİLER</h2>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Name" class="form-label required-field"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
-            <!-- Genel Bilgiler -->
-
-
-            <div class="form-section">
-                <h2 class="section-title">GENEL BİLGİLER</h2>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label asp-for="Name" class="form-label required-field"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Örnek: Deniz Manzaralı Restoran" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="col-md-6">
-                        <label asp-for="Slogan" class="form-label"></label>
-                        <input asp-for="Slogan" class="form-control" placeholder="Örnek: Ege'nin en taze lezzetleri" />
-                        <span asp-validation-for="Slogan" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label asp-for="LinkUrl" class="form-label"></label>
-                        <input asp-for="LinkUrl" class="form-control" placeholder="https://www.ornekrestoran.com" />
-                        <span asp-validation-for="LinkUrl" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label asp-for="Description" class="form-label required-field"></label>
-                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="İşletmenizi detaylı şekilde tanıtın"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                </div>
+            <div class="col-md-6">
+                <label asp-for="Slogan" class="form-label"></label>
+                <input asp-for="Slogan" class="form-control" />
+                <span asp-validation-for="Slogan" class="text-danger"></span>
             </div>
-
-            <!-- İletişim Bilgileri -->
-            <div class="form-section">
-                <h2 class="section-title">İLETİŞİM BİLGİLERİ</h2>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label asp-for="Phone" class="form-label required-field"></label>
-                        <input asp-for="Phone" class="form-control" placeholder="05XX XXX XX XX" />
-                        <span asp-validation-for="Phone" class="text-danger"></span>
-                    </div>
-                    <div class="col-md-6">
-                        <label asp-for="Email" class="form-label required-field"></label>
-                        <input asp-for="Email" class="form-control" placeholder="iletisim@isletme.com" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="LinkUrl" class="form-label"></label>
+                <input asp-for="LinkUrl" class="form-control" />
+                <span asp-validation-for="LinkUrl" class="text-danger"></span>
             </div>
-
-
-
-            <!-- Konum Bilgileri -->
-            <div class="form-section">
-                <h2 class="section-title">KONUM BİLGİLERİ</h2>
-
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label for="country" class="form-label required-field">Ülke</label>
-                        <select class="form-select" id="country" name="CountryId"" required>
-                            <option value="" selected disabled>Seçiniz</option>
-                            @foreach (var country in ViewBag.Countries)
-                            {
-                                <option value="@country.Id">@country.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="city" class="form-label required-field">Şehir</label>
-                        <select class="form-select" id="city" name="CityId" required>
-                            <option value="" selected disabled>Seçiniz</option>
-                            @foreach (var city in ViewBag.Cities)
-                            {
-                                <option value="@city.Id">@city.Tittle</option>
-                            }
-                        </select>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="district" class="form-label required-field">İlçe</label>
-                        <select class="form-select" id="district" required>
-                            <option value="" selected disabled>Seçiniz</option>
-                            <option value="kadikoy">Kadıköy</option>
-                            <option value="besiktas">Beşiktaş</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address" class="form-label required-field">Tam Adres</label>
-                    <textarea class="form-control" id="address" rows="2" placeholder="Mahalle, cadde, sokak ve kapı no" required></textarea>
-                </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label required-field"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+        </div>
+    </div>
+
+    <!-- İletişim Bilgileri -->
+    <div class="form-section">
+        <h2 class="section-title">İLETİŞİM BİLGİLERİ</h2>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Phone" class="form-label required-field"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Email" class="form-label required-field"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Konum Bilgileri -->
+    <div class="form-section">
+        <h2 class="section-title">KONUM BİLGİLERİ</h2>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label asp-for="CountryId" class="form-label required-field"></label>
+                <select asp-for="CountryId" class="form-select">
+                    <option value="" selected disabled>Seçiniz</option>
+                    @foreach (var country in ViewBag.Countries)
+                    {
+                        <option value="@country.Id">@country.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="CityId" class="form-label required-field"></label>
+                <select asp-for="CityId" class="form-select">
+                    <option value="" selected disabled>Seçiniz</option>
+                    @foreach (var city in ViewBag.Cities)
+                    {
+                        <option value="@city.Id">@city.Tittle</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label required-field"></label>
+            <textarea asp-for="Address" class="form-control" rows="2"></textarea>
+        </div>
+    </div>
+
+    
 
             <!-- Resim Galerisi -->
             <div class="form-section">

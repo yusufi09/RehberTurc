@@ -1,5 +1,5 @@
 ﻿@using RehberTurcEntity
-@model List<Calendar>
+@model List<Event>
 ﻿Profil Sınıfları Bilgileri
 
 <style>
@@ -86,9 +86,6 @@
     }
 </style>
 
-
-<div class="col-lg-4">
-    <div class="sidebar">
         <div class="takvim-wrapper">
             <div class="takvim-header">
                 <button onclick="oncekiAy()">‹</button>
@@ -163,11 +160,8 @@
             <span class="sidebar__advertise-title">
                 advertising box
             </span>
-            <img src="upload/add.jpg" alt="">
+            <img src="~/upload/add.jpg" alt="">
         </div>
-
-    </div>
-</div>
 
 <script>
     const ayIsimleri = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
@@ -228,8 +222,8 @@
 
           data.forEach(e => {
             let imageUrl = e.images && e.images.length > 0
-              ? `~/html/images/${e.images[0].url}`
-              : "~/html/images/default-event.jpg";
+              ? `/html/images/${e.images[0].url}`
+              : "/html/images/default-event.jpg";
 
             etkinlikAlan.innerHTML += `
               <div class="event-card">
