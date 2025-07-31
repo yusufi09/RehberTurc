@@ -1,0 +1,46 @@
+﻿@using RehberTurcDAL.DTOs.CityDTO
+@model CityUpdateDto
+
+@{
+    ViewData["Title"] = "Edit City";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit City</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Tittle"></label>
+        <input asp-for="Tittle" class="form-control" />
+        <span asp-validation-for="Tittle" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsFavorite"></label>
+        <input asp-for="IsFavorite" class="form-control" type="number" />
+        <span asp-validation-for="IsFavorite" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CountryId"></label>
+        <input asp-for="CountryId" class="form-control" />
+        <span asp-validation-for="CountryId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -26,6 +26,7 @@ namespace RehberTurcDAL.DTOs.CityDTO
 		public List<CityComment> comments { get; set; }
 		public List<CityImage> Images { get; set; }
 
+		public DateTime CreatedDate { get; set; }
 		public CityUpdateDto()
 		{
 			Images = new List<CityImage>();
