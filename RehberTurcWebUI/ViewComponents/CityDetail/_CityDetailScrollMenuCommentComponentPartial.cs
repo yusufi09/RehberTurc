@@ -18,10 +18,11 @@ namespace RehberTurcWebUI.ViewComponents.CityDetail
 		}
 		public IViewComponentResult Invoke(int userId)
 		{
-			var user = _userService.GetAll().FirstOrDefault(x => x.Id == userId.ToString());
-			if (user == null)
-				return View(new List<ApplicationUser>());
-			return View(new List<ApplicationUser> { user });
+			//var user = _userService.GetAll().FirstOrDefault(x => x.Id == userId.ToString());
+			//if (user == null)
+			//	return View(new List<ApplicationUser>());
+			//return View(new List<ApplicationUser> { user });
+			return View();
 		}
 	}
 }

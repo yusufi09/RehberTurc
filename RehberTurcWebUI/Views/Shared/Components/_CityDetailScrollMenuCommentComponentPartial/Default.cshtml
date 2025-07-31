@@ -1,19 +1,19 @@
-@using RehberTurcEntity
-@model List<ApplicationUser>
+@* @using RehberTurcEntity
+@model List<ApplicationUser> *@
 
 <!-- reviews list -->
 <ul class="reviews-list">
-    @foreach (var item in Model)
-	{
+    @* @foreach (var item in Model)
+	{ *@
     <li class="reviews-list__item">
         <div class="reviews-list__item-box">
             <img class="reviews-list__item-image" src="~/html/upload/avatar-p" alt="">
             <div class="reviews-list__item-content">
                 <h3 class="reviews-list__item-title">
-                    @item.FirstName
+                   @*  @item. *@ FirstName
                 </h3>
                 <span class="reviews-list__item-location">
-                    @item.Address@item.City
+                    @* @item. *@Address@* @item. *@City
                 </span>
                 <p class="reviews-list__item-date">
                     Posted October 7, 2018
@@ -23,7 +23,7 @@
                     Good Service but..
                 </h3>
                 <p class="reviews-list__item-description">
-                    @item.CityComments
+                   @*  @item. *@CityComments
                 </p>
                 <a class="reviews-list__item-helpful" href="#">
                     <i class="la la-thumbs-o-up"></i>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </li>
-    }
+    @* } *@
 
 </ul>
 <!-- reviews-list -->
